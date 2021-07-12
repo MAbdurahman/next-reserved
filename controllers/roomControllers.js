@@ -1,25 +1,24 @@
 import Room from '../models/roomModel';
+import ErrorHandler from '../utils/errorHandler';
 
 /*===============================================================
          Get All Rooms => (GET)/api/rooms
 ==================================================================*/
-const allRooms = async (req, res) => {
-   try {
-      const rooms = await Room.find({});
+const allRooms = async (req, res, next) => {
+	try {
+		const rooms = await Room.find({});
 
-      res.status(200).json({
-         success: true,
-         count: rooms.length,
-         rooms
-      })
-      
-   } catch (error) {
-      res.status(400).json({
-         success: false,
-         error: error.message
-      })
-   }
-
+		res.status(200).json({
+			success: true,
+			count: rooms.length,
+			rooms,
+		});
+	} catch (error) {
+		res.status(400).json({
+			success: false,
+			error: error.message,
+		});
+	}
 };
 
 /*===============================================================
@@ -44,90 +43,57 @@ const newRoom = async (req, res) => {
 /*===============================================================
             Get Room Details => (GET)/api/rooms/:id
 ==================================================================*/
-const getSingleRoom = async (req, res) => {
-	try {
-		const room = await Room.findById(req.query.id);
-      
-      if (!room) {
-         return res.status(400).json({
-			success: false,
-			error: 'Room not found with this ID!'
-      })
-   }
+const getSingleRoom = async (req, res, next) => {
+	const room = await Room.findById(req.query.id);
 
-		res.status(200).json({
-			success: true,
-			room,
-		});
-
-	} catch (error) {
-		res.status(400).json({
-			success: false,
-			error: error.message,
-		});
+	if (!room) {
+		return next(new ErrorHandler('A room was not found with this ID!', 404));
 	}
+
+	res.status(200).json({
+		success: true,
+		room,
+	});
 };
 
 /*===============================================================
             Update Room Details => (PUT)/api/rooms/:id
 ==================================================================*/
-const updateRoom = async (req, res) => {
-	try {
-		const room = await Room.findById(req.query.id);
-      
-      if (!room) {
-         return res.status(400).json({
-			success: false,
-			error: 'Room not found with this ID!'
-      })
-   }
+const updateRoom = async (req, res, next) => {
+	const room = await Room.findById(req.query.id);
 
-   const updateRoom = await Room.findByIdAndUpdate(req.query.id, req.body, {
-      new: true,
-      runValidators: true,
-      useFindAndModify: false
-   });
-
-		res.status(200).json({
-			success: true,
-			updateRoom,
-		});
-
-	} catch (error) {
-		res.status(400).json({
-			success: false,
-			error: error.message,
-		});
+	if (!room) {
+		return next(new ErrorHandler('A room was not found with this ID!', 404));
 	}
+
+	const updateRoom = await Room.findByIdAndUpdate(req.query.id, req.body, {
+		new: true,
+		runValidators: true,
+		useFindAndModify: false,
+	});
+
+	res.status(200).json({
+		success: true,
+		updateRoom,
+	});
 };
 
 /*===============================================================
             Delete Room => (DELETE)/api/rooms/:id
 ==================================================================*/
 const deleteRoom = async (req, res) => {
-	try {
-		const room = await Room.findById(req.query.id);
-      
-      if (!room) {
-         return res.status(400).json({
-			success: false,
-			error: 'Room not found with this ID!'
-      })
-   }
+	const room = await Room.findById(req.query.id);
 
-   await room.remove();
-
-		res.status(200).json({
-			success: true,
-			message: 'Room has been deleted!'
-		});
-
-	} catch (error) {
-		res.status(400).json({
-			success: false,
-			error: error.message,
-		});
+	if (!room) {
+		return next(new ErrorHandler('A room was not found with this ID!', 404));
 	}
+
+	await room.remove();
+
+	res.status(200).json({
+		success: true,
+		message: 'Room has been deleted!',
+	});
 };
 
 export { allRooms, newRoom, getSingleRoom, updateRoom, deleteRoom };
