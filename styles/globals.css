@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Roboto:wght@300&display=swap');
+
 /* =========================================
               Website Resets
 ============================================ */
@@ -20,4 +22,51 @@
 
 *:focus {
   outline: none;
+}
+
+/* =========================================
+                Root, Html, and Body
+============================================ */
+:root {
+  --light-blue: #7898af;
+  --med-blue: #334155;
+  --light-gray: #e2e2e4;
+  --med-gray: #a9a9a9;
+  --dark-gray: #626262;
+
+  --black: #20212d;
+  --off-black: #393b3d;
+  --white: #ffffff;
+}
+
+html {
+  font-size: 100%;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  color: var(--black);
+  background-color: rgb(238, 236, 236);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Lora", serif;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-size: .8125rem;
+  font-weight: 400;
+  line-height: 1.5;
 }
