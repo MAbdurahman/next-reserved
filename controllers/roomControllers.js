@@ -3,7 +3,7 @@ import ErrorHandler from '../utils/errorHandler';
 import catchAsyncErrors from '../middlewares/catchAsyncErrors';
 
 /*===============================================================
-         Get All Rooms => (GET)/api/rooms
+            Get All Rooms => (GET)/api/rooms
 ==================================================================*/
 const allRooms = catchAsyncErrors(async (req, res, next) => {
 	try {
