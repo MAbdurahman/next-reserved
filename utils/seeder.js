@@ -4,17 +4,13 @@ const mongoose = require('mongoose');
 const rooms = require('../data/rooms');
 
 const SEED_URL = process.env.SEED_DB_URI;
-	
 
-mongoose.connect(SEED_URL
-	,
-	{
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useFindAndModify: false,
-		useCreateIndex: true,
-	}
-);
+mongoose.connect(SEED_URL, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useFindAndModify: false,
+	useCreateIndex: true,
+});
 
 const seedRooms = async () => {
 	try {
