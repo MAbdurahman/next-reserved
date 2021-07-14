@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
 
 /* =========================================
               Website Resets
@@ -24,19 +25,23 @@
   outline: none;
 }
 
-/* =========================================
-                Root, Html, and Body
-============================================ */
+/*==========================================
+          Root, Html, and Body
+=============================================*/
 :root {
-  --light-blue: #7898af;
-  --med-blue: #334155;
-  --light-gray: #e2e2e4;
-  --med-gray: #a9a9a9;
-  --dark-gray: #626262;
-
+  --brown: #4b4237;
+  --gold: #d5a021;
+  --beige: #ede7d9;
+  --light-green: #93a880;
+  --green: #386926;
   --black: #20212d;
   --off-black: #393b3d;
   --white: #ffffff;
+
+  --font-brand: 'Caveat', cursive;
+  --font-heading: 'Lora', serif;
+  --font-body: 'Roboto', sans-serif;
+
 }
 
 html {
@@ -50,7 +55,7 @@ body {
 
 body {
   color: var(--black);
-  background-color: rgb(238, 236, 236);
+  background-color: var(--beige);
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -61,20 +66,54 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Lora", serif;
+  font-family: var(--font-heading);
 }
 
 p {
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font-body);
   font-size: .8125rem;
   font-weight: 400;
   line-height: 1.5;
 }
 
+/*==========================================
+          Utility Classes
+=============================================*/
+
+.img-responsive {
+  vertical-align: middle;
+}
+
+.img-thumbnail {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.img-responsive,
+.thumbnail>img,
+.thumbnail a>img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
 /*================================================
-        header 
+          Header
 ===================================================*/
+.navbar-brand {
+font-family: var(--font-brand);
+font-weight: 700;
+color: var(--green);
+}
 .navbar-brand img {
   cursor: pointer;
 }
