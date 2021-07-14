@@ -9,10 +9,10 @@ export default function Header() {
 						<img
 							src='./images/logo.png'
 							alt='Logo'
-							width='40px'
-							height='40px'
-						/>{' '}
-						E-Reserved
+							width='50px'
+							height='50px'
+						/>{''}
+						e-Reserve
 					</div>
 				</div>
 
