@@ -1,10 +1,13 @@
 import { combineReducers } from "redux";
+import { allRoomsReducer } from "./roomReducers";
 
 
 
 
 
-const reducers = combineReducers({})
+const reducers = combineReducers({
+   allRooms: allRoomsReducer
+})
 
 
 
