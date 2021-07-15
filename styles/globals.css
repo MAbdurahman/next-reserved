@@ -61,14 +61,14 @@ body {
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h2 {
   font-family: var(--font-heading);
 }
 
+h3,
+h4,
+h5,
+h6,
 p {
   font-family: var(--font-body);
   font-size: .8125rem;
@@ -111,9 +111,10 @@ p {
 .navbar-brand {
 font-family: var(--font-brand);
 font-weight: 700;
-font-size: 2.25rem;
+font-size: 3rem;
 color: var(--green);
 }
+.navbar-brand,
 .navbar-brand img {
   cursor: pointer;
 }
