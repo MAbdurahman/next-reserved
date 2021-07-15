@@ -1,13 +1,18 @@
-import React from 'react';
-import RoomItem from "./../components/room/RoomItem";
-import { useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import RoomItem from './../components/room/RoomItem';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { getRooms } from './../redux/actions/roomActions';
-
 
 export default function Home() {
 	//**************** variables ****************//
-	const { rooms } = useSelector(state => state.allRooms);
-	
+	const { rooms, error } = useSelector(state => state.allRooms);
+
+	//**************** functions ****************//
+	useEffect(() => {
+		toast.error(error);
+	}, []);
+
 	return (
 		<section id='rooms' className='container mt-5'>
 			<h2 className='mb-3 ml-2 stays-heading'>Stays in New York</h2>
