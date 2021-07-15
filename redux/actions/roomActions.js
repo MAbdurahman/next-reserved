@@ -1,4 +1,6 @@
-import { startSession } from "mongoose";
+import axios from 'axios';
+import absoluteUrl from 'next-absolute-url';
+
 import {
 	ALL_ROOMS_SUCCESS,
 	ALL_ROOMS_FAIL,
@@ -6,7 +8,6 @@ import {
 	ROOM_DETAILS_FAIL,
 	NEW_REVIEW_REQUEST,
 	NEW_REVIEW_SUCCESS,
-	NEW_REVIEW_RESET,
 	NEW_REVIEW_FAIL,
 	REVIEW_AVAILABILITY_REQUEST,
 	REVIEW_AVAILABILITY_SUCCESS,
@@ -16,15 +17,12 @@ import {
 	ADMIN_ROOMS_FAIL,
 	NEW_ROOM_REQUEST,
 	NEW_ROOM_SUCCESS,
-	NEW_ROOM_RESET,
 	NEW_ROOM_FAIL,
 	UPDATE_ROOM_REQUEST,
 	UPDATE_ROOM_SUCCESS,
-	UPDATE_ROOM_RESET,
 	UPDATE_ROOM_FAIL,
 	DELETE_ROOM_REQUEST,
 	DELETE_ROOM_SUCCESS,
-	DELETE_ROOM_RESET,
 	DELETE_ROOM_FAIL,
 	GET_REVIEWS_REQUEST,
 	GET_REVIEWS_SUCCESS,
@@ -37,28 +35,34 @@ import {
 } from '../constants/roomConstants';
 
 /*======================================================
-      All Rooms Reducer
+      Get All Rooms
 =========================================================*/
-export const allRoomsReducer = (state = { rooms: [] }, action) => {
-	switch (action.type) {
-		case ALL_ROOMS_SUCCESS:
-			return {
-				roomsCount: action.payload.roomsCount,
-				resultPerPage: action.payload.resultPerPage,
-				filteredRoomsCount: action.payload.filteredRoomsCount,
-				rooms: action.payload.rooms,
-			};
-		case ALL_ROOMS_FAIL:
-			return {
-				error: action.payload,
-			};
-		case CLEAR_ERRORS:
-			return {
-				...state,
-				error: null,
-			};
+export const getRooms = (req) => async dispatch => {
+	try {
+      const { origin } = absoluteUrl(req)
+		const { data } = await axios.get(`${origin}/api/rooms`);
 
-		default:
-			return state;
+      dispatch({
+         type: ALL_ROOMS_SUCCESS,
+         payload: data
+      })
+	} catch (error) {
+		dispatch({
+			type: ALL_ROOMS_FAIL,
+			payload: error.response.data.message,
+		});
 	}
+};
+
+
+
+
+
+/*======================================================
+      Clear Errors
+=========================================================*/
+export const clearErrors = () => async dispatch => {
+	dispatch({
+		type: CLEAR_ERRORS,
+	});
 };

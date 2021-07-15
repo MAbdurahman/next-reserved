@@ -1,8 +1,12 @@
 import React from 'react';
-
+import { useSelector } from "react-redux";
+import { getRooms } from './../redux/actions/roomActions';
 
 
 export default function Home() {
+	//**************** variables ****************//
+	const { rooms } = useSelector(state => state.allRooms);
+	console.log(rooms);
 	return (
 		<section id='rooms' className='container mt-5'>
 			<h2 className='mb-3 ml-2 stays-heading'>Stays in New York</h2>
