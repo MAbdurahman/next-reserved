@@ -2,12 +2,12 @@ import React from 'react';
 
 export default function Header() {
 	return (
-		<nav className='navbar row justify-content-center sticky-top'>
+		<nav className='header navbar row justify-content-center sticky-top'>
 			<div className='container'>
 				<div className='col-3 p-0'>
-					<div className='navbar-brand'>
+					<div className='header navbar-brand'>
 						<img
-							src='./images/logo.png'
+							src='/images/logo.png'
 							alt='Logo'
 							width='50px'
 							height='50px'

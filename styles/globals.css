@@ -71,11 +71,13 @@ h5,
 h6,
 p {
   font-family: var(--font-body);
-  font-size: .8125rem;
-  font-weight: 400;
-  line-height: 1.5;
 }
 
+p {
+    font-size: .8125rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
 /*==========================================
           Utility Classes
 =============================================*/
@@ -108,14 +110,17 @@ p {
 /*================================================
           Header
 ===================================================*/
-.navbar-brand {
+.header.navbar {
+  background-color: var(--beige);
+}
+.header.navbar-brand {
 font-family: var(--font-brand);
 font-weight: 700;
 font-size: 3rem;
 color: var(--green);
 }
-.navbar-brand,
-.navbar-brand img {
+.header.navbar-brand,
+.header.navbar-brand img {
   cursor: pointer;
 }
 
@@ -396,7 +401,8 @@ nav {
 
 .card-title a {
   color: #2e2e2e;
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */
+  font-size: 1rem;
 }
 
 .card-title a:hover {
@@ -422,9 +428,9 @@ nav {
   color: white;
 }
 
-.card-img-top {
+/* .card-img-top {
   border-radius: 0.8rem;
-}
+} */
 
 .ratings {
   font-size: 1.2rem;
