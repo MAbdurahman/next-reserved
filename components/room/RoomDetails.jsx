@@ -39,7 +39,7 @@ export default function RoomDetails() {
 					<span id='no_of_reviews'>({room.numOfReviews} Reviews)</span>
 				</div>
 
-				<Carousel hover='pause'>
+				<Carousel indicators={false} hover='pause'>
 					{room.images &&
 						room.images.map(image => (
 							<Carousel.Item key={image.public_id}>

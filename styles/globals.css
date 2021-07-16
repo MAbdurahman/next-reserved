@@ -42,6 +42,8 @@
   --font-heading: 'Lora', serif;
   --font-body: 'Roboto', sans-serif;
 
+  --cubic-timing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
 }
 
 html {
@@ -123,7 +125,14 @@ color: var(--green);
 .header.navbar-brand img {
   cursor: pointer;
 }
-
+.header.navbar-brand a {
+  color: var(--green) !important;
+  transition: all .5s var(--cubic-timing);
+  -webkit-transition: all .5s var(--cubic-timing);
+  -moz-transition: all .5s var(--cubic-timing);
+  -ms-transition: all .5s var(--cubic-timing);
+  -o-transition: all .5s var(--cubic-timing);
+}
 
 
 
