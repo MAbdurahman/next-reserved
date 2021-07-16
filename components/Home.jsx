@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 import RoomItem from './../components/room/RoomItem';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { getRooms } from './../redux/actions/roomActions';
+import { clearErrors } from './../redux/actions/roomActions';
 
 export default function Home() {
 	//**************** variables ****************//
+	const dispatch = useDispatch();
 	const { rooms, error } = useSelector(state => state.allRooms);
 
 	//**************** functions ****************//
 	useEffect(() => {
 		toast.error(error);
+		dispatch(clearErrors());
 	}, []);
 
 	return (

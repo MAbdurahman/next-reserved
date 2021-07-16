@@ -54,6 +54,34 @@ export const getRooms = (req) => async dispatch => {
 	}
 };
 
+/*======================================================
+      Get Room Details
+=========================================================*/
+export const getRoomDetails = (req, id) => async dispatch => {
+	try {
+		const { origin } = absoluteUrl(req);
+
+		let url;
+
+		if (req) {
+			url = `${origin}/api/rooms/${id}`;
+		} else {
+			url = `/api/rooms/${id}`;
+		}
+
+		const { data } = await axios.get(url);
+
+		dispatch({
+			type: ROOM_DETAILS_SUCCESS,
+			payload: data.room,
+		});
+	} catch (error) {
+		dispatch({
+			type: ROOM_DETAILS_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
 
 
 
