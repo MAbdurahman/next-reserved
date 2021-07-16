@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function Header() {
 	return (
@@ -6,13 +7,16 @@ export default function Header() {
 			<div className='container'>
 				<div className='col-3 p-0'>
 					<div className='header navbar-brand'>
-						<img
-							src='/images/logo.png'
-							alt='Logo'
-							width='50px'
-							height='50px'
-						/>{''}
-						e-Reserve
+						<Link href='/'>
+							<img
+								src='/images/logo.png'
+								alt='Logo'
+								width='50px'
+								height='50px'
+							/>
+						</Link>
+						{''}
+						<Link href='/'>e-Reserve</Link>
 					</div>
 				</div>
 

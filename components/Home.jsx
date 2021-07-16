@@ -14,7 +14,6 @@ export default function Home() {
 		if(error) {
 			toast.error(error);
 			dispatch(clearErrors());
-
 		}
 		
 	}, []);
