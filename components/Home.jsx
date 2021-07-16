@@ -11,8 +11,12 @@ export default function Home() {
 
 	//**************** functions ****************//
 	useEffect(() => {
-		toast.error(error);
-		dispatch(clearErrors());
+		if(error) {
+			toast.error(error);
+			dispatch(clearErrors());
+
+		}
+		
 	}, []);
 
 	return (
