@@ -98,7 +98,7 @@ export default function Footer() {
 								<br />
 							</small>
 							<small className='copyright-text'>
-								&copy;&nbsp;2021 G-Spot, All rights reserved
+								&copy;&nbsp;2021 e-Reserve, All rights reserved
 							</small>
 						</p>
 					</div>

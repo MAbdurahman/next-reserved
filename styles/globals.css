@@ -18,11 +18,11 @@
 }
 
 *::-moz-focus-inner {
-  border: 0;
+  border: 0 !important;
 }
 
 *:focus {
-  outline: none;
+  outline: none !important;
 }
 
 /*==========================================
@@ -37,6 +37,9 @@
   --black: #20212d;
   --off-black: #393b3d;
   --white: #ffffff;
+
+  --button-background: #9b5a1a;
+  --button-color: #dccfb9;
 
   --footer-color: #4f2c1d;
   --footer-background: #e6ddce;
@@ -79,10 +82,11 @@ p {
 }
 
 p {
-    font-size: .8125rem;
-    font-weight: 400;
-    line-height: 1.5;
+  font-size: .8125rem;
+  font-weight: 400;
+  line-height: 1.5;
 }
+
 /*==========================================
           Utility Classes
 =============================================*/
@@ -118,16 +122,19 @@ p {
 .header.navbar {
   background-color: var(--beige);
 }
+
 .header.navbar-brand {
-font-family: var(--font-brand);
-font-weight: 700;
-font-size: 3rem;
-color: var(--green);
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 3rem;
+  color: var(--green);
 }
+
 .header.navbar-brand,
 .header.navbar-brand img {
   cursor: pointer;
 }
+
 .header.navbar-brand a {
   color: var(--green) !important;
   transition: all .5s var(--cubic-timing);
@@ -188,6 +195,7 @@ footer .footer-inner-container {
 .footer .link a {
   color: var(--footer-color);
 }
+
 .footer .link a:hover {
   color: var(--footer-color);
 }
@@ -257,7 +265,7 @@ footer .link a:hover {
 
 footer .copyright p {
   margin-bottom: 0;
-  border-top: 2px solid rgba(79,44,29, 0.1);
+  border-top: 2px solid rgba(79, 44, 29, 0.1);
 }
 
 footer div.col.copyright {
@@ -287,12 +295,108 @@ footer div.col.copyright {
   /*...mobile portrait styles */
 }
 
+/*================================================
+          Pagination
+===================================================*/
 
+.pagination-container {
+  font-family: var(--font-body);
+  letter-spacing: 1px;
+  margin-bottom: 1em;
+}
 
+.pagination a.page-item.active a.page-link {
+  background-color: #e61e4d;
+  background-color: var(--brown);
+  border-color: #e61e4d;
+  border-color: var(--brown);
+  border: none;
+}
 
+.pagination a.page-item.active,
+.pagination a.page-item:focus {
+  border: none !important;
+}
 
+.pagination a.page-link,
+.pagination a.page-link.undefined,
+.pagination a.page-link:active,
+.pagination a.page-link:focus {
+  border: none !important;
+}
 
+/* .pagination {
+  border: 2px solid var(--brown);
+} */
+/* .pagination a.page-link.undefined {
+  background-color: var(--button-background);
+  color: var(--button-color);
+} */
+.pagination li.page-item a.page-link {
+  background-color: var(--brown);
+  color: var(--beige);
+}
 
+.pagination li.page-item.active a.page-link.undefined,
+.pagination li.page-item:focus a.page-link.undefined {
+  background-color: var(--button-background);
+  color: var(--button-color);
+  border: none !important;
+  outline: none !important;
+}
+
+.pagination li.page-item:not(.disabled):hover a.page-link {
+  background-color: var(--button-background);
+  color: var(--beige);
+}
+
+.pagination a.page-link {
+  color: #e61e4d;
+  color: var(--brown);
+}
+
+/* .pagination a.page-link.active:hover,
+.pagination a.page-link.active,
+.pagination a.page-link.undefined,
+.pagination a.page-link:focus,
+.pagination a.page-link.undefined:focus,
+.pagination a.page-item.active {
+  color: #e61e4d;
+  background-color: var(--button-background);
+  color: var(--beige);
+  border: none !important;
+}
+.pagination a.page-link:not(.active),
+.pagination a.page-link:not(:focus) {
+  background-color: var(--brown);
+  color: var(--beige);
+} */
+
+/* .pagination .page-item {
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  border-left: 0 solid transparent;
+  border-right: 0 solid transparent;
+  transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+} */
+
+/*==========================================
+      Back to Search Link
+=============================================*/
+a.back-to-search {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--brown);
+}
+a.back-to-search:hover {
+  color: var(--button-background);
+}
 
 
 
@@ -546,7 +650,7 @@ nav {
   font-weight: 700;
 }
 
-.back-to-search {
+/* .back-to-search {
   font-size: 1.1rem;
   color: #e61e4d;
   font-weight: 600;
@@ -554,7 +658,7 @@ nav {
 
 .back-to-search:hover {
   color: #e61e4d;
-}
+} */
 
 .card {
   height: 100%;
@@ -612,6 +716,7 @@ nav {
   position: relative;
   font-family: FontAwesome;
   color: #e61e4d;
+  color: var(--gold);
 }
 
 .rating-outer::before {
@@ -630,6 +735,7 @@ nav {
 .rating-inner::before {
   content: '\f005 \f005 \f005 \f005 \f005';
   color: #e61e4d;
+  color: var(--gold);
 }
 
 /* Room Details Page */
@@ -696,12 +802,12 @@ nav {
 }
 
 /* Footer */
-footer {
+/* footer {
   margin-top: 6rem;
   color: grey;
   bottom: 0;
   width: 100%;
-}
+} */
 
 /* Stripe payment design */
 
@@ -772,18 +878,7 @@ input::placeholder {
 }
 
 /* Pagination */
-.page-item.active .page-link {
-  background-color: #e61e4d;
-  border-color: #e61e4d;
-}
 
-.page-link {
-  color: #e61e4d;
-}
-
-.page-link:hover {
-  color: #e61e4d;
-}
 
 /* Booking Details */
 .booking-details p {
