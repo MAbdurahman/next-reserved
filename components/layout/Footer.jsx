@@ -20,8 +20,8 @@ export default function Footer() {
 							We are a brand whose incredible family of associates put
 							soul in hospitality everyday. The needs of our guests and
 							associates are at the forefront of what we do. Through
-							authenticity and innovation, we create good memorable
-							experiences.
+							authenticity and innovation, great memorable
+							experiences begin with us!
 						</p>
 						<p className='social-icons'>
 							<a href='!#' className='social-icon facebook'>

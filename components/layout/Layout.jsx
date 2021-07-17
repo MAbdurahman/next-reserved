@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function Layout({
 	children,
-	title = 'e-Reserve | Good Memories Begin Here!',
+	title = 'e-Reserve | Great Memories Begin Here!',
 }) {
 	return (
 		<div>
