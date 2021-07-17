@@ -398,8 +398,17 @@ a.back-to-search:hover {
   color: var(--button-background);
 }
 
-
-
+/*=============================================
+          Search Form
+================================================*/
+.search-form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+margin-bottom: 2rem;
+  font-weight: 700;
+}
 
 
 
@@ -549,7 +558,8 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 5rem;
-
+  margin-top: 1.5rem;
+margin-bottom: 2rem;
   font-weight: 700;
 }
 
