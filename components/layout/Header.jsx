@@ -21,7 +21,7 @@ export default function Header() {
 				</div>
 
 				<div className='col-3 mt-3 mt-md-0 text-center'>
-					<a className='btn btn-danger px-4 text-white login-header-btn float-right'>
+					<a className='button-3d px-4 float-right'>
 						Login
 					</a>
 				</div>

@@ -30,8 +30,11 @@
 =============================================*/
 :root {
   --brown: #4b4237;
+  --tan-one: #dccfb9;
+  --tan-two: #9b5a1a;
   --gold: #d5a021;
   --beige: #ede7d9;
+  --beige-dk: #e6ddce;
   --light-green: #93a880;
   --green: #386926;
   --black: #20212d;
@@ -68,6 +71,10 @@ body {
   overflow-x: hidden;
 }
 
+/*=============================================
+          General Styles
+================================================*/
+
 h1,
 h2 {
   font-family: var(--font-heading);
@@ -85,6 +92,22 @@ p {
   font-size: .8125rem;
   font-weight: 400;
   line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: var(--beige-dk);
+}
+
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: var(--beige);
+}
+
+a .button-3d {
+  color: var(--beige);
 }
 
 /*==========================================
@@ -116,6 +139,50 @@ p {
   height: auto;
 } */
 
+
+.button-3d {
+  position: relative;
+  width: auto;
+  display: inline-block;
+  color: var(--button-color) !important;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-radius: 5px;
+  border: solid 1px var(--button-background);
+  background: var(--button-background);
+  text-align: center;
+  padding: 5px 8px;
+  margin: 12px;
+  box-shadow: 0px 6px 0px rgba(79, 44, 29, 0.8);
+  -webkit-box-shadow: 0px 6px 0px rgba(79,44,29, 0.8);
+  -moz-box-shadow: 0px 6px 0px rgba(79,44,29, 0.8);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.button-3d:focus,
+.button-3d:hover,
+.button-3d:active {
+  text-decoration: none;
+  color: var(--beige) !important;
+  background-color: #bb732b;
+  box-shadow: 0 6px 0 rgba(79, 44, 29, 0.85);
+}
+
+.button-3d:active {
+  -webkit-box-shadow: 0px 2px 0px rgba(79, 44,  29, 0.9);
+  -moz-box-shadow: 0px 2px 0px rgba(79, 44,  29, 0.9);
+  box-shadow: 0px 2px 0px rgba(79, 44,  29, 0.9);
+  position: relative;
+  top: 4px;
+}
+
 /*================================================
           Header
 ===================================================*/
@@ -142,6 +209,10 @@ p {
   -moz-transition: all .5s var(--cubic-timing);
   -ms-transition: all .5s var(--cubic-timing);
   -o-transition: all .5s var(--cubic-timing);
+}
+
+.header.navbar-brand a:hover {
+  text-decoration: underline;
 }
 
 /*=======================================
@@ -190,6 +261,10 @@ footer .footer-inner-container {
   font-size: 1.5rem;
   color: var(--green);
 
+}
+
+.footer a.footer-navbar-brand:hover {
+  text-decoration: underline;
 }
 
 .footer .link a {
@@ -261,6 +336,7 @@ footer .link a {
 
 footer .link a:hover {
   color: var(--footer-color);
+  text-decoration: underline;
 }
 
 footer .copyright p {
@@ -393,9 +469,26 @@ a.back-to-search {
   font-weight: 600;
   letter-spacing: 1px;
   color: var(--brown);
+  transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 a.back-to-search:hover {
   color: var(--button-background);
+  text-decoration: underline;
+}
+
+/*=============================================
+          Room Details
+================================================*/
+.booking-card button.button-3d {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  font-weight: bold;
 }
 
 /*=============================================
@@ -406,9 +499,21 @@ a.back-to-search:hover {
   justify-content: center;
   align-items: center;
   margin-top: 1.5rem;
-margin-bottom: 2rem;
+  margin-bottom: 2rem;
   font-weight: 700;
 }
+.search-box select:focus {
+  outline-color: var(--button-background) !important;
+}
+.search-box button.button-3d {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*=============================================
+          
+================================================*/
 
 
 
@@ -559,7 +664,7 @@ body {
   align-items: center;
   margin-top: 5rem;
   margin-top: 1.5rem;
-margin-bottom: 2rem;
+  margin-bottom: 2rem;
   font-weight: 700;
 }
 
@@ -567,20 +672,20 @@ margin-bottom: 2rem;
   padding: 2.5rem 3rem;
 }
 
-.wrapper form .btn,
+/* .wrapper form .btn,
 .booking-btn,
 .update-btn,
 #review_btn,
 .new-room-btn,
 #forgot_password_button,
-#new_password_button,
+#new_password_button
 .search-form .btn {
   background-color: #e61e4d;
   border-color: #e61e4d;
   color: white;
   margin-top: 2.5rem;
   font-weight: bold;
-}
+} */
 
 .review-btn {
   background-color: #e61e4d;
@@ -673,6 +778,7 @@ nav {
 .card {
   height: 100%;
   border: 0px;
+  background-color: var(--beige-dk);
 }
 
 .card-title a {
@@ -690,6 +796,7 @@ nav {
 .card-body {
   padding-left: 0;
   padding-right: 0;
+  
 }
 
 .card-text {

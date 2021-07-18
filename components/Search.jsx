@@ -22,7 +22,7 @@ export default function Search() {
 	return (
 		<div className='container container-fluid'>
 			<div className='row wrapper'>
-				<div className='col-10 col-lg-5'>
+				<div className='col-10 col-lg-5 search-box'>
 					<form className='shadow-lg' onSubmit={submitHandler}>
 						<h2 className='mb-3'>Search Rooms</h2>
 						<div className='form-group'>
@@ -69,7 +69,7 @@ export default function Search() {
 							</select>
 						</div>
 
-						<button type='submit' className='btn btn-block py-2'>
+						<button type='submit' className='btn btn-block button-3d py-2'>
 							Search
 						</button>
 					</form>

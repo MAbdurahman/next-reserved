@@ -33,7 +33,7 @@ export default function RoomItem({ room }) {
 						<span id='no_of_reviews'>({room.numOfReviews} Reviews)</span>
 					</div>
 
-					<button className='btn btn-block view-btn'>
+					<button className='btn btn-block button-3d'>
 						<Link href={`/room/${room._id}`}>View Details</Link>
 					</button>
 				</div>
