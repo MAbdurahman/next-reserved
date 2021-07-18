@@ -348,6 +348,10 @@ footer div.col.copyright {
   margin-bottom: 1em;
 }
 
+svg.MuiSvgIcon-root {
+  color: var(--footer-color);
+}
+
 /*tablet landscape and desktop layout (960px or more) */
 @media only screen and (max-width: 960px) {
   /*...tablet landscape and desktop styles */
@@ -796,6 +800,7 @@ nav {
 .card-body {
   padding-left: 0;
   padding-right: 0;
+  padding-bottom: .25em;
   
 }
 

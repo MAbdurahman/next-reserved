@@ -40,7 +40,7 @@ export default function Footer() {
 						<div className='link-container'>
 							<ul className='m-0 p-0 link-list'>
 								<li className='link'>
-									<a href='!#'>Home</a>
+									<a href='/'>Home</a>
 								</li>
 								<li className='link'>
 									<a href='!#'>About</a>
