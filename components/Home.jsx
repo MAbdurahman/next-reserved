@@ -52,7 +52,7 @@ export default function Home() {
 	return (
 		<>
 			<section id='rooms' className='container mt-3'>
-				<h2 className='mb-3 ml-2 stays-heading'>
+				<h2 className='mb-3 ml-2 stays-heading text-capitalize'>
 					{location ? `Rooms in ${location}` : 'All Rooms'}
 				</h2>
 
@@ -63,8 +63,8 @@ export default function Home() {
 				</Link>
 				<div className='row'>
 					{rooms && rooms.length === 0 ? (
-						<div className='alert alert-danger mt-5 w-100'>
-							<b>No Rooms.</b>
+						<div className='alert alert-danger mt-5 w-100 text-center'>
+							<b>No Rooms Found!</b>
 						</div>
 					) : (
 						rooms &&

@@ -49,7 +49,7 @@ export default function Footer() {
 									<a href='!#'>Team</a>
 								</li>
 								<li className='link'>
-									<a href='!#'>Rooms</a>
+									<a href='/search'>Rooms</a>
 								</li>
 								<li className='link'>
 									<a href='!#'>Contact</a>

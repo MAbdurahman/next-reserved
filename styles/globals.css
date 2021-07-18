@@ -683,6 +683,7 @@ nav {
 
 .card-title a:hover {
   color: #e61e4d;
+  color: var(--button-background);
   text-decoration: none;
 }
 
