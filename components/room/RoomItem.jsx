@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function RoomItem({ room }) {
    return (
-		<div className='col-sm-12 col-md-6 col-lg-3 mt-3'>
+		<div className='col-sm-12 col-md-6 col-lg-3 mt-3 mb-4'>
 			<div className='card p-2'>
 				<Image
 					className='card-img-top mx-auto'

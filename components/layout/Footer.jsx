@@ -18,19 +18,31 @@ export default function Footer() {
 						</Navbar.Brand>
 						<p className='pr-5'>
 							We are a brand whose incredible family of associates put
-							soul in hospitality everyday. The needs of our guests and
-							associates are at the forefront of what we do. Through
-							authenticity and innovation, great memorable
-							experiences begin with us!
+							their souls in hospitality everyday. The needs of our guests 
+							and affiliates are at the forefront of what we do. Through
+							authenticity and innovation, great memorable experiences
+							begin with us!
 						</p>
 						<p className='social-icons'>
-							<a href='!#' className='social-icon facebook'>
+							<a
+								href='https://www.facebook.com'
+								target='_blank'
+								className='social-icon facebook'
+							>
 								<i className='fa fa-facebook-square'></i>
 							</a>
-							<a href='!#' className='social-icon twitter'>
+							<a
+								href='https://twitter.com/'
+								target='_blank'
+								className='social-icon twitter'
+							>
 								<i className='fa fa-twitter-square'></i>
 							</a>
-							<a href='!#' className='social-icon instagram'>
+							<a
+								href='https://www.instagram.com/'
+								target='_blank'
+								className='social-icon instagram'
+							>
 								<i className='fa fa-instagram'></i>
 							</a>
 						</p>
@@ -40,19 +52,29 @@ export default function Footer() {
 						<div className='link-container'>
 							<ul className='m-0 p-0 link-list'>
 								<li className='link'>
-									<a href='/'>Home</a>
+									<Link href='/'>
+										<a>Home</a>
+									</Link>
 								</li>
 								<li className='link'>
-									<a href='!#'>About</a>
+									<Link href='/about'>
+										<a>About</a>
+									</Link>
 								</li>
 								<li className='link'>
-									<a href='!#'>Team</a>
+									<Link href='/search'>
+										<a>Rooms</a>
+									</Link>
 								</li>
 								<li className='link'>
-									<a href='/search'>Rooms</a>
+									<Link href='/testimonials'>
+										<a>Testimonials</a>
+									</Link>
 								</li>
 								<li className='link'>
-									<a href='!#'>Contact</a>
+									<Link href='/contact'>
+										<a>Contact</a>
+									</Link>
 								</li>
 							</ul>
 						</div>
@@ -98,7 +120,7 @@ export default function Footer() {
 								<br />
 							</small>
 							<small className='copyright-text'>
-								&copy;&nbsp;2021 e-Reserve, All rights reserved
+								&copy;&nbsp;2013 - 2021 e-Reserve, All rights reserved
 							</small>
 						</p>
 					</div>
