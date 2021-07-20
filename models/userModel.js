@@ -41,6 +41,7 @@ const userSchema = mongoose.Schema({
 		},
 		url: {
 			type: String,
+			required: true,
 			default: '/images/default-user.png',
 		},
 	},
@@ -60,6 +61,22 @@ const userSchema = mongoose.Schema({
 	resetPasswordExpire: Date,
 });
 
+//**************** Encrypting password before saving ****************//
+userSchema.pre('save', async function(next) {
+	if (!this.isModified('password')) {
+		next();
+	}
+
+	this.password = await bcrypt.hash(this.password, 10);
+
+});
+
+//**************** variables ****************//
+//**************** variables ****************//
+//**************** variables ****************//
+//**************** variables ****************//
+//**************** variables ****************//
+//**************** variables ****************//
 
 
 
