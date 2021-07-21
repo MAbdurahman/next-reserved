@@ -21,9 +21,11 @@ export default function Header() {
 				</div>
 
 				<div className='col-3 mt-3 mt-md-0 text-center'>
+					<Link href='/login'>
 					<a className='button-3d px-4 float-right'>
 						Login
 					</a>
+					</Link>
 				</div>
 			</div>
 		</nav>

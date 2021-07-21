@@ -516,10 +516,34 @@ a.back-to-search:hover {
 }
 
 /*=============================================
-          
+          Login Form
 ================================================*/
-
-
+.login-box button.button-3d {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.login-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-content: flex-end;
+  
+}
+.login-links a.forgot-link,
+.login-links a.register-link {
+  display: inline-block;
+  color: var(--brown);
+    transition: color .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-transition: color .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -moz-transition: color .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -ms-transition: color .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -o-transition: color .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.login-links a.forgot-link:hover,
+.login-links a.register-link:hover {
+  color: var(--tan-two);
+}
 
 
 
