@@ -41,11 +41,12 @@ const userSchema = mongoose.Schema({
 		public_id: {
 			type: String,
 			required: true,
+			default: '/images/default_avatar.jpg'
 		},
 		url: {
 			type: String,
 			required: true,
-			default: '/images/default-user.png',
+			default: '/images/default_avatar.jpg',
 		},
 	},
 	role: {

@@ -22,8 +22,8 @@ export default function Search() {
 	return (
 		<div className='container container-fluid'>
 			<div className='row wrapper'>
-				<div className='col-10 col-lg-5 search-box'>
-					<form className='shadow-lg' onSubmit={submitHandler}>
+				<div className='col-10 col-lg-5'>
+					<form className='shadow-lg search-box' onSubmit={submitHandler}>
 						<h2 className='mb-3'>Search Rooms</h2>
 						<div className='form-group'>
 							<label htmlFor='location_field'>Location</label>

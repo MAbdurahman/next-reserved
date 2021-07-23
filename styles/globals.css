@@ -59,12 +59,15 @@ html {
   font-size: 100%;
 }
 
-html,
-body {
-  height: 100vh;
+html {
+  height: 100%;
 }
 
 body {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
   color: var(--black);
   background-color: var(--beige);
   scroll-behavior: smooth;
@@ -156,8 +159,8 @@ a .button-3d {
   padding: 5px 8px;
   margin: 12px;
   box-shadow: 0px 6px 0px rgba(79, 44, 29, 0.8);
-  -webkit-box-shadow: 0px 6px 0px rgba(79,44,29, 0.8);
-  -moz-box-shadow: 0px 6px 0px rgba(79,44,29, 0.8);
+  -webkit-box-shadow: 0px 6px 0px rgba(79, 44, 29, 0.8);
+  -moz-box-shadow: 0px 6px 0px rgba(79, 44, 29, 0.8);
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -moz-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -176,9 +179,9 @@ a .button-3d {
 }
 
 .button-3d:active {
-  -webkit-box-shadow: 0px 2px 0px rgba(79, 44,  29, 0.9);
-  -moz-box-shadow: 0px 2px 0px rgba(79, 44,  29, 0.9);
-  box-shadow: 0px 2px 0px rgba(79, 44,  29, 0.9);
+  -webkit-box-shadow: 0px 2px 0px rgba(79, 44, 29, 0.9);
+  -moz-box-shadow: 0px 2px 0px rgba(79, 44, 29, 0.9);
+  box-shadow: 0px 2px 0px rgba(79, 44, 29, 0.9);
   position: relative;
   top: 4px;
 }
@@ -221,12 +224,14 @@ a .button-3d {
 footer {
   width: 100%;
   height: fit-content;
+  margin-top: auto;
 }
 
 #footer {
   /* position: absolute; */
   bottom: 0;
   width: 100%;
+  
   letter-spacing: 1px;
   /* background-color: #6B6D6E; */
   /* background-color: #373a3c; */
@@ -506,13 +511,38 @@ a.back-to-search:hover {
   margin-bottom: 2rem;
   font-weight: 700;
 }
+
 .search-box select:focus {
   outline-color: var(--button-background) !important;
 }
+
 .search-box button.button-3d {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+}
+
+/*tablet landscape and desktop layout (960px or more) */
+@media only screen and (min-width: 960px) {
+  /*...tablet landscape and desktop styles */
+}
+
+/*table portrait layout (768px to 959px) */
+@media only screen and (max-width: 959px) {
+  /*... tablet portrait styles */
+}
+
+/*mobile landscape layout (480px to 767px) */
+@media only screen and (max-width: 768px) {
+  /*...mobile landscape styles */
+  .search-box {
+    min-width: 98%;
+  }
+}
+
+/*mobile portrait layout (479px or less) */
+@media only screen and (max-width: 479px) {
+  /*...mobile portrait styles */
 }
 
 /*=============================================
@@ -523,23 +553,26 @@ a.back-to-search:hover {
   margin-left: auto;
   margin-right: auto;
 }
+
 .login-links {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-content: flex-end;
-  
+
 }
+
 .login-links a.forgot-link,
 .login-links a.register-link {
   display: inline-block;
   color: var(--brown);
-    transition: color .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    -webkit-transition: color .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    -moz-transition: color .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    -ms-transition: color .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    -o-transition: color .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: color .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: color .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: color .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: color .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: color .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 .login-links a.forgot-link:hover,
 .login-links a.register-link:hover {
   color: var(--tan-two);
@@ -547,13 +580,20 @@ a.back-to-search:hover {
 
 
 
-
-
+/* ==========================================
+        Register Form
+============================================= */
+.register-box button.button-3d {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* ==========================================
         Styles from Original
 ============================================= */
 
+/* 
 html,
 body {
   width: 100%;
@@ -561,11 +601,11 @@ body {
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
-}
+} */
 
 /* Scroll Bar */
 
-::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-track {
   background-color: #f5f5f5;
 }
 
@@ -579,7 +619,7 @@ body {
   border: 0px;
   background-clip: padding-box;
   border-radius: 5px;
-}
+} */
 
 /* Loader */
 
@@ -698,6 +738,35 @@ body {
 
 .wrapper form {
   padding: 2.5rem 3rem;
+}
+
+/*tablet landscape and desktop layout (960px or more) */
+@media only screen and (min-width: 960px) {
+  /*...tablet landscape and desktop styles */
+}
+
+/*table portrait layout (768px to 959px) */
+@media only screen and (max-width: 959px) {
+  /*... tablet portrait styles */
+}
+
+/*mobile landscape layout (480px to 767px) */
+@media only screen and (max-width: 768px) {
+  /*...mobile landscape styles */
+  .wrapper form {
+    width: 66.667%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.2rem 1.2rem;
+  }
+}
+
+/*mobile portrait layout (479px or less) */
+@media only screen and (max-width: 479px) {
+  /*...mobile portrait styles */
+  .wrapper form {
+    width: 100%;
+  }
 }
 
 /* .wrapper form .btn,
@@ -825,7 +894,7 @@ nav {
   padding-left: 0;
   padding-right: 0;
   padding-bottom: .25em;
-  
+
 }
 
 .card-text {

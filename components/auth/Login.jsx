@@ -72,7 +72,7 @@ export default function Login() {
 								Forgot Password
 							</a>
 							&nbsp;/&nbsp;
-							<a href='#' className='register-link'>
+							<a href='/register' className='register-link'>
 								Register
 							</a>
 						</div>
