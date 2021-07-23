@@ -7,19 +7,21 @@ import ButtonLoader from './../layout/ButtonLoader';
 
 export default function Register() {
 	//**************** variables ****************//
+	const avatar_url = `https://res.cloudinary.com/mdbdrrhm/image/upload/v1627060688/next-reserve/avatars/default_avatar_zfeufh.jpg`;
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const { success, error, loading } = useSelector(state => state.auth);
-   const [avatar, setAvatar] = useState('/images/default_avatar.jpg');
+	const [avatar, setAvatar] = useState(avatar_url);
 
 	const [user, setUser] = useState({
 		name: '',
 		email: '',
 		password: '',
-      avatar
+		avatar,
 	});
 
 	const { name, email, password } = user;
+
 	//**************** functions ****************//
 	useEffect(() => {
 		if (success) {
@@ -39,36 +41,24 @@ export default function Register() {
 			name,
 			email,
 			password,
-         avatar
+			avatar,
 		};
 
-      console.log(userData)
 		dispatch(registerUser(userData));
 	};
 
 	const onChange = e => {
-   
-/* 		if (e.target.name === 'avatar') {
-			const reader = new FileReader();
-
-			reader.onload = () => {
-				if (reader.readyState === 2) {
-					setAvatar(reader.result);
-					setAvatarPreview(reader.result);
-				}
-			};
-
-			reader.readAsDataURL(e.target.files[0]);
-		} else {
-      } */
-      setUser({ ...user, [e.target.name]: e.target.value });
+		setUser({ ...user, [e.target.name]: e.target.value });
 	};
 
 	return (
 		<div className='container container-fluid'>
 			<div className='row wrapper'>
 				<div className='col-10 col-lg-5'>
-					<form className='shadow-lg register-box' onSubmit={submitHandler}>
+					<form
+						className='shadow-lg register-box'
+						onSubmit={submitHandler}
+					>
 						<h1 className='mb-3'>Register</h1>
 
 						<div className='form-group'>
@@ -106,37 +96,6 @@ export default function Register() {
 								onChange={onChange}
 							/>
 						</div>
-
-{/* 						<div className='form-group'>
-							<label htmlFor='avatar_upload'>Avatar</label>
-							<div className='d-flex align-items-center'>
-								<div>
-									<figure className='avatar mr-3 item-rtl'>
-										<img
-											src={avatarPreview}
-											className='rounded-circle'
-											alt='image'
-										/>
-									</figure>
-								</div>
-								<div className='custom-file'>
-									<input
-										type='file'
-										name='avatar'
-										className='custom-file-input'
-										id='customFile'
-										accept='images/*'
-										onChange={onChange}
-									/>
-									<label
-										className='custom-file-label'
-										htmlFor='customFile'
-									>
-										Choose Avatar
-									</label>
-								</div>
-							</div>
-						</div> */}
 
 						<button
 							id='login_button'
