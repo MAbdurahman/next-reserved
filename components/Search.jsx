@@ -31,7 +31,7 @@ export default function Search() {
 								type='text'
 								className='form-control'
 								id='location_field'
-								placeholder='State'
+								placeholder='Enter State'
 								value={location}
 								onChange={e => setLocation(e.target.value)}
 							/>
@@ -55,7 +55,7 @@ export default function Search() {
 								type='number'
 								className='form-control'
 								id='guest_field'
-								placeholder='Guest Number'
+								placeholder='Enter Number'
 								value={guests}
 								onChange={e => setGuests(e.target.value)}
 							/>
@@ -79,7 +79,7 @@ export default function Search() {
 								type='text'
 								className='form-control'
 								id='room_type_field'
-								placeholder='Room Size'
+								placeholder='King, Single, or Twins'
 								value={category}
 								onChange={e => setCategory(e.target.value)}
 							/>
