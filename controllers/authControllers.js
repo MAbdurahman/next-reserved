@@ -51,4 +51,46 @@ const currentUserProfile = catchAsyncErrors(async (req, res) => {
 	});
 });
 
-export { registerUser, currentUserProfile };
+/*============================================================
+            Update User Profile => api/me/update
+===============================================================*/
+const updateProfile = catchAsyncErrors(async (req, res) => {
+	const user = await User.findById(req.user._id);
+
+	//************ update input fields ************//
+	if (user) {
+		user.name = req.body.name;
+		user.email = req.body.email;
+
+		if (req.body.password) {
+			user.password = req.body.password;
+		}
+	}
+	//**************** update avatar ****************//
+	if (req.body.avatar !== '') {
+		const image_id = user.avatar.public_id;
+
+		//******** delete user previous image/avatar ********//
+		await cloudinary.v2.uploader.destroy(image_id);
+
+		const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
+			folder: 'next-reserve/avatars',
+			width: '150',
+			crop: 'scale',
+		});
+
+		user.avatar = {
+			public_id: result.public_id,
+			url: result.secure_url,
+		};
+	}
+
+	//***** save user to database *****//
+	await user.save();
+
+	res.status(200).json({
+		success: true,
+	});
+});
+
+export { registerUser, currentUserProfile, updateProfile };
