@@ -15,7 +15,6 @@ cloudinary.config({
             Register User => api/auth/register
 ===============================================================*/
 const registerUser = catchAsyncErrors(async (req, res) => {
-	
 	const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
 		folder: 'next-reserve/avatars',
 		width: '150',
@@ -34,12 +33,22 @@ const registerUser = catchAsyncErrors(async (req, res) => {
 		},
 	});
 
-	console.log(user);
-
 	res.status(200).json({
 		success: true,
 		message: 'User registered successfully!',
 	});
 });
 
-export { registerUser };
+/*============================================================
+            Current User Profile => api/me
+===============================================================*/
+const currentUserProfile = catchAsyncErrors(async (req, res) => {
+	const user = await User.findById(req.user._id);
+
+	res.status(200).json({
+		success: true,
+		user,
+	});
+});
+
+export { registerUser, currentUserProfile };
