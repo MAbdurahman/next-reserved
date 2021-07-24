@@ -80,6 +80,33 @@ export const loadUser = () => async dispatch => {
 };
 
 /*=============================================
+            Update Profile
+================================================*/
+export const updateProfile = userData => async dispatch => {
+	try {
+		dispatch({ type: UPDATE_PROFILE_REQUEST });
+
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		};
+
+		const { data } = await axios.put('/api/me/update', userData, config);
+
+		dispatch({
+			type: UPDATE_PROFILE_SUCCESS,
+			payload: data.success,
+		});
+	} catch (error) {
+		dispatch({
+			type: UPDATE_PROFILE_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
+
+/*=============================================
          Clear Errors
 ================================================*/
 export const clearErrors = () => async dispatch => {

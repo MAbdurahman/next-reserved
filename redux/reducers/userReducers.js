@@ -103,3 +103,60 @@ export const loadedUserReducer = (
 			return state;
 	}
 };
+
+/*=============================================
+            User Reducer
+================================================*/
+export const userReducer = (state = {}, action) => {
+	switch (action.type) {
+		case UPDATE_PROFILE_REQUEST:
+		case UPDATE_USER_REQUEST:
+		case DELETE_USER_REQUEST:
+			return {
+				loading: true,
+			};
+
+		case UPDATE_PROFILE_SUCCESS:
+		case UPDATE_USER_SUCCESS:
+			return {
+				loading: false,
+				isUpdated: action.payload,
+			};
+
+		case DELETE_USER_SUCCESS:
+			return {
+				loading: false,
+				isDeleted: action.payload,
+			};
+
+		case UPDATE_PROFILE_RESET:
+		case UPDATE_USER_RESET:
+			return {
+				loading: false,
+				isUpdated: false,
+			};
+
+		case DELETE_USER_RESET:
+			return {
+				loading: false,
+				isDeleted: false,
+			};
+
+		case UPDATE_PROFILE_FAIL:
+		case UPDATE_USER_FAIL:
+		case DELETE_USER_FAIL:
+			return {
+				loading: false,
+				error: action.payload,
+			};
+
+		case CLEAR_ERRORS:
+			return {
+				...state,
+				error: null,
+			};
+
+		default:
+			return state;
+	}
+};
