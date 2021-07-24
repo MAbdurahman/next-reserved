@@ -32,7 +32,6 @@ import {
 	CLEAR_ERRORS,
 } from '../constants/userConstants';
 
-// Register user
 /*=============================================
          Register User
 ================================================*/
@@ -59,7 +58,27 @@ export const registerUser = userData => async dispatch => {
 	}
 };
 
-// Clear Errors
+/*=============================================
+            Load User
+================================================*/
+export const loadUser = () => async dispatch => {
+	try {
+		dispatch({ type: LOAD_USER_REQUEST });
+
+		const { data } = await axios.get('/api/me');
+
+		dispatch({
+			type: LOAD_USER_SUCCESS,
+			payload: data.user,
+		});
+	} catch (error) {
+		dispatch({
+			type: LOAD_USER_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
+
 /*=============================================
          Clear Errors
 ================================================*/

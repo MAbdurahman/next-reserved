@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { allRoomsReducer, roomDetailsReducer } from "./roomReducers";
-import {authReducer} from "./userReducers";
+import {authReducer, loadedUserReducer} from "./userReducers";
 
 
 
@@ -9,7 +9,8 @@ import {authReducer} from "./userReducers";
 const reducers = combineReducers({
    allRooms: allRoomsReducer,
    roomDetails: roomDetailsReducer,
-   auth: authReducer
+   auth: authReducer,
+   loadedUser: loadedUserReducer
 })
 
 

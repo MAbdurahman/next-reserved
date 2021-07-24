@@ -218,6 +218,20 @@ a .button-3d {
   text-decoration: underline;
 }
 
+
+figure.avatar img.rounded-avatar {
+  border: 3px solid var(--button-background);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+figure.avatar .login-item {
+  color: var(--brown);
+}
+
 /*=======================================
       Footer
 ==========================================*/
@@ -829,6 +843,7 @@ body {
 
 .rounded-circle {
   border-radius: 50% !important;
+background: black !important;
 }
 
 /* Header User Profile */
