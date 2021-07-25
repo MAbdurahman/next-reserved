@@ -1,5 +1,5 @@
 import nc from 'next-connect';
-import dbConnect from './../../../config/dbConnect';
+import connectDatabase from './../../../config/connectDatabase';
 
 import { updateProfile } from './../../../controllers/authControllers';
 
@@ -8,7 +8,7 @@ import onError from './../../../middlewares/errors';
 
 const handler = nc({ onError });
 
-dbConnect();
+connectDatabase();
 
 handler.use(isAuthenticatedUser).put(updateProfile);
 

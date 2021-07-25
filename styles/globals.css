@@ -603,6 +603,19 @@ a.back-to-search:hover {
     margin-right: auto;
 }
 
+
+/*=============================================
+          Update Form
+================================================*/
+.update-box button.button-3d {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
 /* ==========================================
         Styles from Original
 ============================================= */
@@ -657,6 +670,7 @@ body {
   height: 13px;
   border-radius: 50%;
   background: #e61e4d;
+  background: var(--button-background);
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
