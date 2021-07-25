@@ -160,3 +160,44 @@ export const userReducer = (state = {}, action) => {
 			return state;
 	}
 };
+
+/*=============================================
+            Forgot Password Reducer
+================================================*/
+export const forgotPasswordReducer = (state = {}, action) => {
+	switch (action.type) {
+		case FORGOT_PASSWORD_REQUEST:
+		case RESET_PASSWORD_REQUEST:
+			return {
+				loading: true,
+			};
+
+		case FORGOT_PASSWORD_SUCCESS:
+			return {
+				loading: false,
+				message: action.payload,
+			};
+
+		case RESET_PASSWORD_SUCCESS:
+			return {
+				loading: false,
+				success: action.payload,
+			};
+
+		case FORGOT_PASSWORD_FAIL:
+		case RESET_PASSWORD_FAIL:
+			return {
+				loading: false,
+				error: action.payload,
+			};
+
+		case CLEAR_ERRORS:
+			return {
+				...state,
+				error: null,
+			};
+
+		default:
+			return state;
+	}
+};

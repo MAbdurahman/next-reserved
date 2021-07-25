@@ -95,7 +95,7 @@ const updateProfile = catchAsyncErrors(async (req, res) => {
 });
 
 /*============================================================
-            Forgot Password => api/password
+         Forgot Password => api/password/forgot
 ===============================================================*/
 const forgotPassword = catchAsyncErrors(async (req, res, next) => {
 	const user = await User.findOne({ email: req.body.email });
