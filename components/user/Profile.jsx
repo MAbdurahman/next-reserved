@@ -19,7 +19,6 @@ export default function Profile() {
 	});
 
 	const { name, email, password } = user;
-
 	const [avatar, setAvatar] = useState('');
 	const [avatarPreview, setAvatarPreview] = useState(
 		'/images/default_avatar.jpg'
@@ -28,8 +27,8 @@ export default function Profile() {
 	const { user: loadedUser, loading } = useSelector(state => state.loadedUser);
 	const { error, isUpdated, loading: updateLoading } = useSelector(
 		state => state.user
-	);
-
+		);
+		
 	//**************** functions ****************//
 	useEffect(() => {
 		if (loadedUser) {
@@ -64,7 +63,7 @@ export default function Profile() {
 		dispatch(updateProfile(userData));
 	};
 
-	const onChange = e => {
+	const onChangeHandler = e => {
 		if (e.target.name === 'avatar') {
 			const reader = new FileReader();
 
@@ -99,7 +98,7 @@ export default function Profile() {
 										className='form-control'
 										name='name'
 										value={name}
-										onChange={onChange}
+										onChange={onChangeHandler}
 									/>
 								</div>
 
@@ -111,7 +110,7 @@ export default function Profile() {
 										className='form-control'
 										name='email'
 										value={email}
-										onChange={onChange}
+										onChange={onChangeHandler}
 									/>
 								</div>
 
@@ -123,7 +122,7 @@ export default function Profile() {
 										className='form-control'
 										name='password'
 										value={password}
-										onChange={onChange}
+										onChange={onChangeHandler}
 									/>
 								</div>
 
@@ -146,7 +145,7 @@ export default function Profile() {
 												className='custom-file-input'
 												id='customFile'
 												accept='images/*'
-												onChange={onChange}
+												onChange={onChangeHandler}
 											/>
 											<label
 												className='custom-file-label'
