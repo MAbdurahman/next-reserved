@@ -63,18 +63,18 @@ export default function Login() {
 							id='login_button'
 							type='submit'
 							className='button-3d py-3'
-                     disabled={loading ? true : false}
+							disabled={loading ? true : false}
 						>
-							{loading ? <ButtonLoader/> : 'Login'}
+							{loading ? <ButtonLoader /> : 'Login'}
 						</button>
 						<div className='login-links'>
-							<a href='#' className='forgot-link'>
-								Forgot Password
-							</a>
+							<Link href='/password/forgot'>
+								<a className='forgot-link'>Forgot Password</a>
+							</Link>
 							&nbsp;/&nbsp;
-							<a href='/register' className='register-link'>
-								Register
-							</a>
+							<Link href='/register'>
+								<a className='register-link'>Register</a>
+							</Link>
 						</div>
 					</form>
 				</div>

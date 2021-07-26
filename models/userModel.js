@@ -7,10 +7,6 @@ import crypto from 'crypto';
 const name_pattern = /^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{1,}\s?([a-zA-Z]{1,})?)/i;
 const email_pattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 const password_pattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[-+_!@#$%^&*?]).{8,}$/i;
-const lowercase_pattern = /^(?=.*[a-z])/g;
-const uppercase_pattern = /^(?=.*[A-Z])/g;
-const digit_pattern = /^(?=.*\d{1,})/g;
-const special_pattern = /(?=.*[-+_!@#$%^&*?])/g;
 
 const userSchema = mongoose.Schema({
 	name: {

@@ -1,9 +1,10 @@
 import User from './../models/userModel';
 import cloudinary from 'cloudinary';
-import absoluteURL from 'next-absolute-url';
+import absoluteUrl from 'next-absolute-url';
 import catchAsyncErrors from './../middlewares/catchAsyncErrors';
 import ErrorHandler from './../utils/errorHandler';
 import sendEmail from "./../utils/sendEmail";
+import crypto from 'crypto';
 
 //**************** cloudinary configuration ****************//
 cloudinary.config({
@@ -110,12 +111,13 @@ const forgotPassword = catchAsyncErrors(async (req, res, next) => {
 	await user.save({ validateBeforeSave: false });
 
 	//**************** get the origin ****************//
-	const { origin } = absoluteURL(req);
+	const { origin } = absoluteUrl(req);
 
 	//************* create reset password url *************//
 	const resetUrl = `${origin}/password/reset/${resetToken}`;
 
-	const message = `Password reset url is as follow: \n\n ${resetUrl} \n\n\ If you did not request a password reset, ignore this email.`;
+	const message = `Password reset url is as follow: \n ${resetUrl} \n\n\ If you did not request a password reset, ignore this email.`;
+
 
 	try {
 		await sendEmail({
@@ -128,6 +130,7 @@ const forgotPassword = catchAsyncErrors(async (req, res, next) => {
 			success: true,
 			message: `Email sent to: ${user.email}`,
 		});
+
 	} catch (error) {
 		user.resetPasswordToken = undefined;
 		user.resetPasswordExpire = undefined;
@@ -136,14 +139,15 @@ const forgotPassword = catchAsyncErrors(async (req, res, next) => {
 
 		return next(new ErrorHandler(error.message, 500));
 	}
+	
 });
 
-// Reset password   =>   /api/password/reset/:token
 /*============================================================
-            Update User Profile => api/me/update
+         Reset Password => api/password/reset/:token
 ===============================================================*/
 const resetPassword = catchAsyncErrors(async (req, res, next) => {
-	// Hash URL token
+
+	//*********** hash url token **********//
 	const resetPasswordToken = crypto
 		.createHash('sha256')
 		.update(req.query.token)
@@ -157,17 +161,17 @@ const resetPassword = catchAsyncErrors(async (req, res, next) => {
 	if (!user) {
 		return next(
 			new ErrorHandler(
-				'Password reset token is invalid or has been expired',
+				'Password reset token is invalid or has been expired!',
 				400
 			)
 		);
 	}
 
 	if (req.body.password !== req.body.confirmPassword) {
-		return next(new ErrorHandler('Password does not match', 400));
+		return next(new ErrorHandler('Password does not match!', 400));
 	}
 
-	// Setup the new password
+	//*********** setup tne new password ***********//
 	user.password = req.body.password;
 
 	user.resetPasswordToken = undefined;
@@ -177,7 +181,7 @@ const resetPassword = catchAsyncErrors(async (req, res, next) => {
 
 	res.status(200).json({
 		success: true,
-		message: 'Password updated successfully',
+		message: 'Password updated successfully!',
 	});
 });
 
