@@ -14,24 +14,24 @@ const bookingSchema = new mongoose.Schema({
 	},
 	checkInDate: {
 		type: Date,
-		required: true,
+		required: [true, 'Check-in-date is required!']
 	},
 	checkOutDate: {
 		type: Date,
-		required: true,
+		required: [true, 'Check-out-date is required!']
 	},
 	amountPaid: {
 		type: Number,
-		required: true,
+		required: [true, 'The amount paid is required!']
 	},
 	daysOfStay: {
 		type: Number,
-		required: true,
+		required: [true, 'The number of days stay is required!']
 	},
 	paymentInfo: {
 		id: {
 			type: String,
-			required: true,
+			required: [true, 'Payment information is required!']
 		},
 		status: {
 			type: String,
