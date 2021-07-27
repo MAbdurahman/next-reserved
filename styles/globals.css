@@ -124,6 +124,7 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
 /*==========================================
           Utility Classes
 =============================================*/
@@ -256,7 +257,7 @@ footer {
   /* position: absolute; */
   bottom: 0;
   width: 100%;
-  
+
   letter-spacing: 1px;
   /* background-color: #6B6D6E; */
   /* background-color: #373a3c; */
@@ -525,6 +526,21 @@ a.back-to-search:hover {
   font-weight: bold;
 }
 
+div.react-datepicker div.react-datepicker_day {
+  background-color: var(--button-background);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+div.react-datepicker div.react-datepicker_day:focus,
+div.react-datepicker div.react-datepicker_day:hover,
+div.react-datepicker div.react-datepicker_day:active {
+    color: var(--beige) !important;
+    background-color: #bb732b;
+}
+
 /*=============================================
           Search Form
 ================================================*/
@@ -559,6 +575,7 @@ a.back-to-search:hover {
 
 /*mobile landscape layout (480px to 767px) */
 @media only screen and (max-width: 768px) {
+
   /*...mobile landscape styles */
   .search-box {
     min-width: 98%;
@@ -609,9 +626,9 @@ a.back-to-search:hover {
         Register Form
 ============================================= */
 .register-box button.button-3d {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
@@ -809,6 +826,7 @@ body {
 
 /*mobile landscape layout (480px to 767px) */
 @media only screen and (max-width: 768px) {
+
   /*...mobile landscape styles */
   .wrapper form {
     width: 66.667%;
@@ -820,6 +838,7 @@ body {
 
 /*mobile portrait layout (479px or less) */
 @media only screen and (max-width: 479px) {
+
   /*...mobile portrait styles */
   .wrapper form {
     width: 100%;
@@ -886,7 +905,7 @@ body {
 
 .rounded-circle {
   border-radius: 50% !important;
-background: black !important;
+  background: black !important;
 }
 
 /* Header User Profile */

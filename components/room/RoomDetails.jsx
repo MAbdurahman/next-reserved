@@ -1,25 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-import Image from 'next/image'
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import { Carousel } from "react-bootstrap";
-
-import { clearErrors } from "./../../redux/actions/roomActions";
+import Image from 'next/image';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { Carousel } from 'react-bootstrap';
+import { clearErrors } from './../../redux/actions/roomActions';
 import RoomFeatures from './RoomFeatures';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default function RoomDetails() {
 	//**************** variables ****************//
+	const [checkInDate, setCheckInDate] = useState();
+	const [checkOutDate, setCheckOutDate] = useState();
 	const dispatch = useDispatch();
-   const { room, error } = useSelector(state => state.roomDetails);
+	const { room, error } = useSelector(state => state.roomDetails);
 
 	//**************** functions ****************//
-   useEffect(() => {
-      if(error) {
-         toast.error(error);
-         dispatch(clearErrors());
-      }
-   },[])
+	useEffect(() => {
+		if (error) {
+			toast.error(error);
+			dispatch(clearErrors());
+		}
+	}, []);
+
+	const onChangeHandler = (dates) => {
+		const [ checkInDate, checkOutDate ] = dates;
+
+		setCheckInDate(checkInDate);
+		setCheckOutDate(checkOutDate);
+	}
 	return (
 		<>
 			<Head>
@@ -57,11 +67,8 @@ export default function RoomDetails() {
 				<div className='row my-5'>
 					<div className='col-12 col-md-6 col-lg-8'>
 						<h3>Description</h3>
-						<p>
-                     {room.description}
-						</p>
-                  <RoomFeatures room={room} />
-
+						<p>{room.description}</p>
+						<RoomFeatures room={room} />
 					</div>
 
 					<div className='col-12 col-md-6 col-lg-4'>
@@ -69,6 +76,22 @@ export default function RoomDetails() {
 							<p className='price-per-night'>
 								<b>${room.pricePerNight}</b> / night
 							</p>
+
+							<hr />
+
+							<p className='mt-5 mb-3'>Select A Check In & Check Out Date</p>
+							<DatePicker
+								className='w-100 date-picker'
+								selected={checkInDate}
+								onChange={onChangeHandler}
+								startDate={checkInDate}
+								endDate={checkOutDate}
+								minDate={new Date()}
+								excludeDates={''}
+								selectsRange
+								inline
+							/>
+
 							<button className='btn btn-block py-3 button-3d'>
 								Pay
 							</button>
