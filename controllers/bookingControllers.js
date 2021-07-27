@@ -31,9 +31,46 @@ const newBooking = catchAsyncErrors(async (req, res) => {
 		booking,
 	});
 });
-/*===============================================================
-            Get All Rooms => (GET)/api/rooms
-==================================================================*/
+/*=====================================================================
+   Check RoomBooking Availability => (GET)/api/bookings/check
+========================================================================*/
+const checkRoomBookingAvailability = catchAsyncErrors(async (req, res) => {
+	let { roomId, checkInDate, checkOutDate } = req.query;
+
+	checkInDate = new Date(checkInDate);
+	checkOutDate = new Date(checkOutDate);
+
+	const bookings = await Booking.find({
+		room: roomId,
+		$and: [
+			{
+				checkInDate: {
+					$lte: checkOutDate,
+				},
+			},
+			{
+				checkOutDate: {
+					$gte: checkInDate,
+				},
+			},
+		],
+	});
+
+	//*** check if any booking is available ***//
+	let isAvailable;
+
+	if (bookings && bookings.length === 0) {
+		isAvailable = true;
+
+	} else {
+		isAvailable = false;
+	}
+
+	res.status(200).json({
+		success: true,
+		isAvailable,
+	});
+});
 /*===============================================================
             Get All Rooms => (GET)/api/rooms
 ==================================================================*/
@@ -50,6 +87,4 @@ const newBooking = catchAsyncErrors(async (req, res) => {
             Get All Rooms => (GET)/api/rooms
 ==================================================================*/
 
-export {
-   newBooking
-}
+export { newBooking, checkRoomBookingAvailability };
