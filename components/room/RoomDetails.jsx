@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { Carousel } from 'react-bootstrap';
@@ -13,7 +15,9 @@ export default function RoomDetails() {
 	//**************** variables ****************//
 	const [checkInDate, setCheckInDate] = useState();
 	const [checkOutDate, setCheckOutDate] = useState();
+	const [daysOfStay, setDaysOfStay] = useState();
 	const dispatch = useDispatch();
+	const router = useRouter();
 	const { room, error } = useSelector(state => state.roomDetails);
 
 	//**************** functions ****************//
@@ -24,12 +28,61 @@ export default function RoomDetails() {
 		}
 	}, []);
 
-	const onChangeHandler = (dates) => {
-		const [ checkInDate, checkOutDate ] = dates;
+	const getDaysOfStay = (checkInDate, checkOutDate) => {
+		let oneDay_milliSeconds = 86400000;
+		const numberOfDays = Math.floor(
+			(new Date(checkOutDate) - new Date(checkInDate)) /
+				oneDay_milliSeconds +
+				1
+		);
+
+		return numberOfDays;
+	};
+
+	const onChangeHandler = dates => {
+		const [checkInDate, checkOutDate] = dates;
 
 		setCheckInDate(checkInDate);
 		setCheckOutDate(checkOutDate);
-	}
+
+		if (checkInDate && checkOutDate) {
+			const days = getDaysOfStay(checkInDate, checkOutDate);
+
+			setDaysOfStay(days);
+		}
+	};
+
+	const newBookingHandler = async () => {
+		const bookingData = {
+			room: router.query.id,
+			checkInDate,
+			checkOutDate,
+			daysOfStay,
+			amountPaid: 90,
+			paymentInfo: {
+				id: 'STRIPE_PAYMENT_ID',
+				status: 'STRIPE_PAYMENT_STATUS',
+			},
+		};
+
+		try {
+			const config = {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			};
+
+			const { data } = await axios.post(
+				'/api/bookings',
+				bookingData,
+				config
+			);
+
+			console.log(data);
+		} catch (error) {
+			console.log(error.response);
+		}
+	};
 	return (
 		<>
 			<Head>
@@ -79,7 +132,9 @@ export default function RoomDetails() {
 
 							<hr />
 
-							<p className='mt-5 mb-3'>Select A Check In & Check Out Date</p>
+							<p className='mt-5 mb-3'>
+								Select A Check In & Check Out Date
+							</p>
 							<DatePicker
 								className='w-100 date-picker'
 								selected={checkInDate}
@@ -92,7 +147,9 @@ export default function RoomDetails() {
 								inline
 							/>
 
-							<button className='btn btn-block py-3 button-3d'>
+							<button 
+							onClick={newBookingHandler}
+							className='btn btn-block py-3 button-3d'>
 								Pay
 							</button>
 						</div>
