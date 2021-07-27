@@ -1,3 +1,5 @@
+import axios from 'axios';
+import absoluteUrl from 'next-absolute-url';
 import {
 	CHECK_BOOKING_REQUEST,
 	CHECK_BOOKING_SUCCESS,
@@ -44,4 +46,13 @@ export const checkBooking = (
 			payload: error.response.data.message,
 		});
 	}
+};
+
+/*=============================================
+         Clear Errors
+================================================*/
+export const clearErrors = () => async dispatch => {
+	dispatch({
+		type: CLEAR_ERRORS,
+	});
 };

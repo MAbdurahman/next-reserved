@@ -6,10 +6,12 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { Carousel } from 'react-bootstrap';
-import { clearErrors } from './../../redux/actions/roomActions';
 import RoomFeatures from './RoomFeatures';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { clearErrors } from './../../redux/actions/roomActions';
+import { checkBooking } from '../../redux/actions/bookingActions';
+import { CHECK_BOOKING_RESET } from '../../redux/constants/bookingConstants';
 
 export default function RoomDetails() {
 	//**************** variables ****************//
@@ -18,7 +20,11 @@ export default function RoomDetails() {
 	const [daysOfStay, setDaysOfStay] = useState();
 	const dispatch = useDispatch();
 	const router = useRouter();
+	const { user } = useSelector(state => state.loadedUser);
 	const { room, error } = useSelector(state => state.roomDetails);
+	const { available, loading: bookingLoading } = useSelector(
+		state => state.checkBooking
+	);
 
 	//**************** functions ****************//
 	useEffect(() => {
@@ -49,8 +55,17 @@ export default function RoomDetails() {
 			const days = getDaysOfStay(checkInDate, checkOutDate);
 
 			setDaysOfStay(days);
+			dispatch(
+				checkBooking(
+					id,
+					checkInDate.toISOString(),
+					checkOutDate.toISOString()
+				)
+			);
 		}
 	};
+
+	const { id } = router.query;
 
 	const newBookingHandler = async () => {
 		const bookingData = {
@@ -146,12 +161,31 @@ export default function RoomDetails() {
 								selectsRange
 								inline
 							/>
+							{available === true && (
+								<div className='alert alert-success my-3 font-weight- text-center'>
+									Available on date(s) selected.
+								</div>
+							)}
 
-							<button 
-							onClick={newBookingHandler}
-							className='btn btn-block py-3 button-3d'>
-								Pay
-							</button>
+							{available === false && (
+								<div className='alert alert-danger my-3 font-weight-bold text-center'>
+									Unavailable on date(s) selected.
+								</div>
+							)}
+							{available && !user && (
+								<div className='alert alert-danger my-3 font-weight- text-center'>
+									Login to book room.
+								</div>
+							)}
+
+							{available && user && (
+								<button
+									onClick={newBookingHandler}
+									className='button-3d py-3 booking-btn'
+								>
+									Pay
+								</button>
+							)}
 						</div>
 					</div>
 				</div>
