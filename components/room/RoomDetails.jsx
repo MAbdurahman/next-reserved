@@ -93,7 +93,7 @@ export default function RoomDetails() {
 				config
 			);
 
-			console.log(data);
+			
 		} catch (error) {
 			console.log(error.response);
 		}
