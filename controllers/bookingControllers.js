@@ -1,6 +1,10 @@
 import Booking from './../models/bookingModel';
 import catchAsyncErrors from './../middlewares/catchAsyncErrors';
 import ErrorHandler from './../utils/errorHandler';
+import Moment from 'moment';
+import { extendMoment } from 'moment-range';
+
+const moment = extendMoment(Moment);
 
 /*===============================================================
          Create New Booking => (POST)/api/bookings
@@ -61,7 +65,6 @@ const checkRoomBookingAvailability = catchAsyncErrors(async (req, res) => {
 
 	if (bookings && bookings.length === 0) {
 		isAvailable = true;
-
 	} else {
 		isAvailable = false;
 	}
@@ -69,6 +72,39 @@ const checkRoomBookingAvailability = catchAsyncErrors(async (req, res) => {
 	res.status(200).json({
 		success: true,
 		isAvailable,
+	});
+});
+/*==============================================================================
+   Check Booked Dates Of A Room => (GET)/api/bookings/check_booked_dates
+=================================================================================*/
+const checkBookedDatesOfRoom = catchAsyncErrors(async (req, res) => {
+	const { roomId } = req.query;
+
+	const bookings = await Booking.find({ room: roomId });
+
+	let bookedDates = [];
+
+	const timeDifference = moment().utcOffset() / 60;
+
+	bookings.forEach(booking => {
+		const checkInDate = moment(booking.checkInDate).add(
+			timeDifference,
+			'hours'
+		);
+		const checkOutDate = moment(booking.checkOutDate).add(
+			timeDifference,
+			'hours'
+		);
+
+		const range = moment.range(moment(checkInDate), moment(checkOutDate));
+
+		const dates = Array.from(range.by('day'));
+		bookedDates = bookedDates.concat(dates);
+	});
+
+	res.status(200).json({
+		success: true,
+		bookedDates,
 	});
 });
 /*===============================================================
@@ -83,8 +119,5 @@ const checkRoomBookingAvailability = catchAsyncErrors(async (req, res) => {
 /*===============================================================
             Get All Rooms => (GET)/api/rooms
 ==================================================================*/
-/*===============================================================
-            Get All Rooms => (GET)/api/rooms
-==================================================================*/
 
-export { newBooking, checkRoomBookingAvailability };
+export { newBooking, checkRoomBookingAvailability, checkBookedDatesOfRoom };
