@@ -57,3 +57,41 @@ export const checkBookingReducer = (state = { available: null }, action) => {
 			return state;
 	}
 };
+
+/*=============================================
+         Get All Booked Dates
+================================================*/
+export const bookedDatesReducer = (state = { dates: [] }, action) => {
+	switch (action.type) {
+		case BOOKED_DATES_SUCCESS:
+			return {
+				loading: false,
+				dates: action.payload,
+			};
+
+		case BOOKED_DATES_FAIL:
+			return {
+				loading: false,
+				error: action.payload,
+			};
+
+		case CLEAR_ERRORS:
+			return {
+				...state,
+				error: null,
+			};
+
+		default:
+			return state;
+	}
+};
+
+/*=============================================
+         Check Booking Reducer
+================================================*/
+/*=============================================
+         Check Booking Reducer
+================================================*/
+/*=============================================
+         Check Booking Reducer
+================================================*/

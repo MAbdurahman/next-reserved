@@ -49,6 +49,43 @@ export const checkBooking = (
 };
 
 /*=============================================
+         Get Booked Dates
+================================================*/
+export const getBookedDates = id => async dispatch => {
+	try {
+		const { data } = await axios.get(
+			`/api/bookings/check_booked_dates?roomId=${id}`
+		);
+
+		dispatch({
+			type: BOOKED_DATES_SUCCESS,
+			payload: data.bookedDates,
+		});
+	} catch (error) {
+		dispatch({
+			type: BOOKED_DATES_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
+
+
+
+
+/*=============================================
+         Check Booking 
+================================================*/
+/*=============================================
+         Check Booking 
+================================================*/
+/*=============================================
+         Check Booking 
+================================================*/
+/*=============================================
+         Check Booking 
+================================================*/
+
+/*=============================================
          Clear Errors
 ================================================*/
 export const clearErrors = () => async dispatch => {
