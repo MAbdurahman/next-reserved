@@ -10,7 +10,10 @@ import RoomFeatures from './RoomFeatures';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { clearErrors } from './../../redux/actions/roomActions';
-import { checkBooking } from '../../redux/actions/bookingActions';
+import {
+	checkBooking,
+	getBookedDates,
+} from '../../redux/actions/bookingActions';
 import { CHECK_BOOKING_RESET } from '../../redux/constants/bookingConstants';
 
 export default function RoomDetails() {
@@ -20,6 +23,7 @@ export default function RoomDetails() {
 	const [daysOfStay, setDaysOfStay] = useState();
 	const dispatch = useDispatch();
 	const router = useRouter();
+	const { dates } = useSelector(state => state.bookedDates);
 	const { user } = useSelector(state => state.loadedUser);
 	const { room, error } = useSelector(state => state.roomDetails);
 	const { available, loading: bookingLoading } = useSelector(
@@ -27,13 +31,10 @@ export default function RoomDetails() {
 	);
 
 	//**************** functions ****************//
-	useEffect(() => {
-		if (error) {
-			toast.error(error);
-			dispatch(clearErrors());
-		}
-	}, []);
-
+	const excludedDates = [];
+	dates.forEach(date => {
+		excludedDates.push(new Date(date));
+	});
 	const getDaysOfStay = (checkInDate, checkOutDate) => {
 		let oneDay_milliSeconds = 86400000;
 		const numberOfDays = Math.floor(
@@ -92,12 +93,22 @@ export default function RoomDetails() {
 				bookingData,
 				config
 			);
-
-			
 		} catch (error) {
 			console.log(error.response);
 		}
 	};
+
+	useEffect(() => {
+		dispatch(getBookedDates(id));
+
+		toast.error(error);
+		dispatch(clearErrors());
+
+		return () => {
+			dispatch({ type: CHECK_BOOKING_RESET });
+		};
+	}, [dispatch, id]);
+
 	return (
 		<>
 			<Head>
@@ -157,7 +168,7 @@ export default function RoomDetails() {
 								startDate={checkInDate}
 								endDate={checkOutDate}
 								minDate={new Date()}
-								excludeDates={''}
+								excludeDates={excludedDates}
 								selectsRange
 								inline
 							/>
