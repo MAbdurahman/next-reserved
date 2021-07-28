@@ -174,7 +174,7 @@ export default function RoomDetails() {
 							)}
 							{available && !user && (
 								<div className='alert alert-danger my-3 font-weight- text-center'>
-									Login to book room.
+									Login to reserve a room.
 								</div>
 							)}
 
