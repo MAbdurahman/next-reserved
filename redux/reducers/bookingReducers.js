@@ -120,9 +120,34 @@ export const bookingsReducer = (state = { bookings: [] }, action) => {
 			return state;
 	}
 };
+
 /*=============================================
-         Check Booking Reducer
+         Booking Details Reducer
 ================================================*/
+export const bookingDetailsReducer = (state = { booking: {} }, action) => {
+	switch (action.type) {
+		case BOOKING_DETAILS_SUCCESS:
+			return {
+				loading: false,
+				booking: action.payload,
+			};
+
+		case BOOKING_DETAILS_FAIL:
+			return {
+				loading: false,
+				error: action.payload,
+			};
+
+		case CLEAR_ERRORS:
+			return {
+				...state,
+				error: null,
+			};
+
+		default:
+			return state;
+	}
+};
 /*=============================================
          Check Booking Reducer
 ================================================*/
