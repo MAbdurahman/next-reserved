@@ -69,12 +69,32 @@ export const getBookedDates = id => async dispatch => {
 	}
 };
 
-
-
-
 /*=============================================
-         Check Booking 
+         Get Current User Bookings
 ================================================*/
+export const myBookings = (authCookie, req) => async dispatch => {
+	try {
+		const { origin } = absoluteUrl(req);
+
+		const config = {
+			headers: {
+				cookie: authCookie,
+			},
+		};
+
+		const { data } = await axios.get(`${origin}/api/bookings/me`, config);
+
+		dispatch({
+			type: MY_BOOKINGS_SUCCESS,
+			payload: data.bookings,
+		});
+	} catch (error) {
+		dispatch({
+			type: MY_BOOKINGS_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
 /*=============================================
          Check Booking 
 ================================================*/

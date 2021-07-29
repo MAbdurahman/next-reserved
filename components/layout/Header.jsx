@@ -84,7 +84,7 @@ export default function Header() {
 								)}
 
 								<Link href='/bookings/me'>
-									<a className='dropdown-item login-item'>My Bookings</a>
+									<a className='dropdown-item login-item'>My Reservations</a>
 								</Link>
 
 								<Link href='/me/update'>
