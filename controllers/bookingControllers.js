@@ -127,8 +127,24 @@ const myBookings = catchAsyncErrors(async (req, res) => {
 	});
 });
 /*===============================================================
-            Get All Rooms => (GET)/api/rooms
+      Get Booking Details => (GET)/api/bookings/:id
 ==================================================================*/
+const getBookingDetails = catchAsyncErrors(async (req, res) => {
+	const booking = await Booking.findById(req.query.id)
+		.populate({
+			path: 'room',
+			select: 'name pricePerNight images',
+		})
+		.populate({
+			path: 'user',
+			select: 'name email',
+		});
+
+	res.status(200).json({
+		success: true,
+		booking,
+	});
+});
 /*===============================================================
             Get All Rooms => (GET)/api/rooms
 ==================================================================*/
@@ -136,4 +152,10 @@ const myBookings = catchAsyncErrors(async (req, res) => {
             Get All Rooms => (GET)/api/rooms
 ==================================================================*/
 
-export { newBooking, checkRoomBookingAvailability, checkBookedDatesOfRoom, myBookings};
+export {
+	newBooking,
+	checkRoomBookingAvailability,
+	checkBookedDatesOfRoom,
+	myBookings,
+	getBookingDetails
+};
