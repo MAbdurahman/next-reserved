@@ -61,13 +61,13 @@ export default function MyBookings() {
 					actions: (
 						<>
 							<Link href={`/bookings/${booking._id}`}>
-								<a className='btn btn-primary'>
+								<a className='btn button-gold'>
 									<i className='fa fa-eye'></i>
 								</a>
 							</Link>
 
 							<button
-								className='btn btn-success mx-2'
+								className='btn button-green mx-2'
 								onClick={() => downloadInvoice(booking)}
 							>
 								<i className='fa fa-download'></i>
