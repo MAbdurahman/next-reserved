@@ -204,14 +204,32 @@ input[type=number] {
 }
 
 .button-gold {
-  color: var(--beige);
+  color: var(--beige-dk);
   background-color: var(--gold);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.button-green {
-  color: var(--beige);
-  background-color: var(--green);
 
+.button-green {
+  color: var(--beige-dk);
+  background-color: var(--green);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.button-gold:focus,
+.button-gold:hover,
+.button-gold:active,
+.button-green:focus,
+.button-green:hover,
+.button-green:active {
+  color: white;
 }
 
 /*================================================
