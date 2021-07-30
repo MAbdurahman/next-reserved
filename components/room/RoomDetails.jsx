@@ -21,6 +21,7 @@ export default function RoomDetails() {
 	const [checkInDate, setCheckInDate] = useState();
 	const [checkOutDate, setCheckOutDate] = useState();
 	const [daysOfStay, setDaysOfStay] = useState();
+	const [paymentLoading, setPaymentLoading] = useState(false);
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const { dates } = useSelector(state => state.bookedDates);
@@ -37,11 +38,11 @@ export default function RoomDetails() {
 	});
 	const getDaysOfStay = (checkInDate, checkOutDate) => {
 		let oneDay_milliSeconds = 86400000;
-		const numberOfDays = Math.floor(
-			(new Date(checkOutDate) - new Date(checkInDate)) /
-				oneDay_milliSeconds +
-				1
-		);
+		const numberOfDays =
+			Math.floor(
+				(new Date(checkOutDate) - new Date(checkInDate)) /
+					oneDay_milliSeconds
+			) + 1;
 
 		return numberOfDays;
 	};
@@ -159,7 +160,7 @@ export default function RoomDetails() {
 							<hr />
 
 							<p className='mt-5 mb-3'>
-								Select A Check In & Check Out Date
+								Select Check In & Check Out Date
 							</p>
 							<DatePicker
 								className='w-100 date-picker'
@@ -173,7 +174,7 @@ export default function RoomDetails() {
 								inline
 							/>
 							{available === true && (
-								<div className='alert alert-success my-3 font-weight- text-center'>
+								<div className='alert alert-success my-3 font-weight-bold text-center'>
 									Available on date(s) selected.
 								</div>
 							)}
@@ -184,7 +185,7 @@ export default function RoomDetails() {
 								</div>
 							)}
 							{available && !user && (
-								<div className='alert alert-danger my-3 font-weight- text-center'>
+								<div className='alert alert-danger my-3 font-weight-bold text-center'>
 									Login to reserve a room.
 								</div>
 							)}
