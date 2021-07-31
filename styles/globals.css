@@ -1225,10 +1225,12 @@ input::placeholder {
 
 .redColor {
   color: red;
+  color: rgb(141, 19, 19);
 }
 
 .greenColor {
   color: green;
+  color: var(--green);
 }
 
 /* 404 Page */

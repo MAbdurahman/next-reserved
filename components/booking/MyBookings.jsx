@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { MDBDataTable } from 'mdbreact';
-// import easyinvoice from 'easyinvoice';
+import easyinvoice from 'easyinvoice';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors } from '../../redux/actions/bookingActions';
@@ -77,9 +77,52 @@ export default function MyBookings() {
 				});
 			});
 
-			const downloadInvoice = async (booking) => {
+		const downloadInvoice = async booking => {
+			const data = {
+				documentTitle: 'e-Reserve Invoice', //Defaults to INVOICE
+				currency: 'USD',
+				taxNotation: 'vat', //or gst
+				marginTop: 25,
+				marginRight: 25,
+				marginLeft: 25,
+				marginBottom: 25,
+				logo:
+					'https://res.cloudinary.com/mdbdrrhm/image/upload/v1627728092/next-reserve/miscellaneous/project-logo_yjikyh.png',
+				sender: {
+					company: 'e-Reserve',
+					address: '1234 SomeStreet Ave. #100',
+					zip: '11235',
+					city: 'SomeCity',
+					country: 'SomeState',
+				},
+				client: {
+					company: `${booking.user.name}`,
+					address: `${booking.user.email}`,
+					zip: '',
+					city: `Check In: ${new Date(booking.checkInDate).toLocaleString(
+						'en-US'
+					)}`,
+					country: `Check In: ${new Date(
+						booking.checkOutDate
+					).toLocaleString('en-US')}`,
+				},
+				invoiceNumber: `${booking._id}`,
+				invoiceDate: `${new Date(Date.now()).toLocaleString('en-US')}`,
+				products: [
+					{
+						quantity: `${booking.daysOfStay}`,
+						description: `${booking.room.name}`,
+						tax: 9.25,
+						price: booking.room.pricePerNight,
+					},
+				],
+				bottomNotice:
+					'An auto generated invoice of your reservation on e-Reserve.',
+			};
 
-			}
+			const result = await easyinvoice.createInvoice(data);
+			easyinvoice.download(`invoice_${booking._id}.pdf`, result.pdf);
+		};
 
 		return data;
 	};

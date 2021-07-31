@@ -8,7 +8,8 @@ import ButtonLoader from './../layout/ButtonLoader';
 export default function Register() {
 	//**************** variables ****************//
 	/* const avatar_url = `https://res.cloudinary.com/mdbdrrhm/image/upload/v1627060688/next-reserve/avatars/default_avatar_zfeufh.jpg`; */
-	const default_avatar = `public/images/default-user.png`;
+	// const default_avatar = `public/images/default-user.png`;
+	const default_avatar = `public/images/profile-1.png`;
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const { success, error, loading } = useSelector(state => state.auth);
