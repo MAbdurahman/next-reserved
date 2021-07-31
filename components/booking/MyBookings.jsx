@@ -79,7 +79,7 @@ export default function MyBookings() {
 
 		const downloadInvoice = async booking => {
 			const data = {
-				documentTitle: 'e-Reserve Invoice', //Defaults to INVOICE
+				documentTitle: 'Reservation Invoice', //Defaults to INVOICE
 				currency: 'USD',
 				taxNotation: 'vat', //or gst
 				marginTop: 25,
