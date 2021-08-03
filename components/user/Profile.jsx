@@ -11,6 +11,8 @@ export default function Profile() {
 	//**************** variables ****************//
 	const dispatch = useDispatch();
 	const router = useRouter();
+	const default_avatar =
+		'https://res.cloudinary.com/mdbdrrhm/image/upload/v1627989403/next-reserve/miscellaneous/default-avatar_mee41a.png';
 
 	const [user, setUser] = useState({
 		name: '',
@@ -20,9 +22,7 @@ export default function Profile() {
 
 	const { name, email, password } = user;
 	const [avatar, setAvatar] = useState('');
-	const [avatarPreview, setAvatarPreview] = useState(
-		'/images/default_avatar.jpg'
-	);
+	const [avatarPreview, setAvatarPreview] = useState(default_avatar);
 
 	const { user: loadedUser, loading } = useSelector(state => state.loadedUser);
 	const { error, isUpdated, loading: updateLoading } = useSelector(
