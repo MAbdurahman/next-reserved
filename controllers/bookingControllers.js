@@ -121,6 +121,8 @@ const myBookings = catchAsyncErrors(async (req, res) => {
 			select: 'name email',
 		});
 
+		// console.log(bookings)
+
 	res.status(200).json({
 		success: true,
 		bookings,

@@ -94,6 +94,7 @@ export default function RoomDetails() {
 				bookingData,
 				config
 			);
+			console.log(data)
 		} catch (error) {
 			console.log(error.response);
 		}

@@ -8,6 +8,8 @@ module.exports = {
 		CLOUDINARY_API_KEY: '485699669179417',
 		CLOUDINARY_API_SECRET: 'T6yk71envnm0oFbnWSjFt_PX2pQ',
 
+		NEXTAUTH_URL: '',
+
 		SMTP_HOST: 'smtp.mailtrap.io',
 		SMTP_PORT: '2525',
 		SMTP_USER: '77fe545b965119',
@@ -15,6 +17,11 @@ module.exports = {
 
 		SMTP_FROM_NAME: 'e-Reserve',
 		SMTP_FROM_EMAIL: 'noreply@ereserve.com',
+
+		STRIPE_API_KEY: '',
+		STRIPE_SECRET_KEY: '',
+
+		STRIPE_WEBHOOK_SECRET: '',
 	},
 	images: {
 		domains: ['res.cloudinary.com'],

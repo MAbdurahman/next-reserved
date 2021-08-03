@@ -9,16 +9,18 @@ import { clearErrors } from '../../redux/actions/bookingActions';
 export default function MyBookings() {
 	//**************** variables ****************//
 	const dispatch = useDispatch();
-	const { bookings, error } = useSelector(state => state.bookings);
+	let { bookings, error } = useSelector(state => state.bookings);
 
 	//**************** functions ****************//
-	useEffect(() => {
+	useEffect(() => {	
+
 		if (error) {
 			toast.error(error);
 			dispatch(clearErrors());
 		}
 	}, [dispatch]);
 
+	
 	const setBookings = () => {
 		const data = {
 			columns: [
@@ -51,6 +53,7 @@ export default function MyBookings() {
 			rows: [],
 		};
 
+		
 		bookings &&
 			bookings.forEach(booking => {
 				data.rows.push({
@@ -77,6 +80,10 @@ export default function MyBookings() {
 				});
 			});
 
+			return data;
+		}
+
+	
 		const downloadInvoice = async booking => {
 			const data = {
 				documentTitle: 'Reservation Invoice', //Defaults to INVOICE
@@ -90,10 +97,10 @@ export default function MyBookings() {
 					'https://res.cloudinary.com/mdbdrrhm/image/upload/v1627728092/next-reserve/miscellaneous/project-logo_yjikyh.png',
 				sender: {
 					company: 'e-Reserve',
-					address: '1234 SomeStreet Ave. #100',
-					zip: '11235',
-					city: 'SomeCity',
-					country: 'SomeState',
+					address: '1234 SomeStreet Ave. #67',
+					zip: 'SomeCity',
+					city: 'SomeState',
+					country: '11235-3747',
 				},
 				client: {
 					company: `${booking.user.name}`,
@@ -102,7 +109,7 @@ export default function MyBookings() {
 					city: `Check In: ${new Date(booking.checkInDate).toLocaleString(
 						'en-US'
 					)}`,
-					country: `Check In: ${new Date(
+					country: `Check Out: ${new Date(
 						booking.checkOutDate
 					).toLocaleString('en-US')}`,
 				},
@@ -112,7 +119,7 @@ export default function MyBookings() {
 					{
 						quantity: `${booking.daysOfStay}`,
 						description: `${booking.room.name}`,
-						tax: 9.25,
+						tax: '9.25',
 						price: booking.room.pricePerNight,
 					},
 				],
@@ -124,8 +131,7 @@ export default function MyBookings() {
 			easyinvoice.download(`invoice_${booking._id}.pdf`, result.pdf);
 		};
 
-		return data;
-	};
+
 	return (
 		<div className='container container-fluid'>
 			<h1 className='my-5'>My Reservations</h1>

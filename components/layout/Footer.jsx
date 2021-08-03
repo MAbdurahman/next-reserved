@@ -82,7 +82,7 @@ export default function Footer() {
 					<div className='col-lg-4 col-xs-12 about-location mt-lg-3'>
 						<h4 className='about-location-address'>Location</h4>
 						<p className='about-location-address mb-0'>
-							1234 SomeStreet Avenue #100
+							1234 SomeStreet Avenue #67
 						</p>
 						<p className='about-location-item mb-1'>
 							SomeCity, SomeState 11235
