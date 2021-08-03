@@ -88,7 +88,7 @@ export default function MyBookings() {
 			const data = {
 				documentTitle: 'Reservation Invoice', //Defaults to INVOICE
 				currency: 'USD',
-				taxNotation: 'vat', //or gst
+				taxNotation: 'gst', //vat or gst
 				marginTop: 25,
 				marginRight: 25,
 				marginLeft: 25,

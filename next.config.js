@@ -18,8 +18,10 @@ module.exports = {
 		SMTP_FROM_NAME: 'e-Reserve',
 		SMTP_FROM_EMAIL: 'noreply@ereserve.com',
 
-		STRIPE_API_KEY: '',
-		STRIPE_SECRET_KEY: '',
+		STRIPE_API_KEY:
+			'pk_test_51JKNTyB0RTWTbgzIuADyy8ypnw55SIUzaHrvX3bhUNQwovKdqELviGYj2w4hjT3wdjzMjeObERjQnas2WWcJNpL800Gg5zR2JJ',
+		STRIPE_SECRET_KEY:
+			'sk_test_51JKNTyB0RTWTbgzIqktyjDPthoNKdZytf7h7WEEVtWtLWgJQyAu4Nn0yE1Km31h9N1n3bZDWSA42m06xw7iao3ZD00yMddj0Cp',
 
 		STRIPE_WEBHOOK_SECRET: '',
 	},
