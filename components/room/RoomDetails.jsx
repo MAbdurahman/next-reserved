@@ -15,6 +15,7 @@ import {
 	getBookedDates,
 } from '../../redux/actions/bookingActions';
 import { CHECK_BOOKING_RESET } from '../../redux/constants/bookingConstants';
+import getStripe from './../../utils/getStripe';
 
 export default function RoomDetails() {
 	//**************** variables ****************//
@@ -94,9 +95,32 @@ export default function RoomDetails() {
 				bookingData,
 				config
 			);
-			console.log(data)
+			console.log(data);
 		} catch (error) {
 			console.log(error.response);
+		}
+	};
+
+	const bookRoom = async (id, pricePerNight) => {
+		setPaymentLoading(true);
+
+		const amount = pricePerNight * daysOfStay;
+
+		try {
+			const link = `/api/checkout_session/${id}?checkInDate=${checkInDate.toISOString()}&checkOutDate=${checkOutDate.toISOString()}&daysOfStay=${daysOfStay}`;
+
+			const { data } = await axios.get(link, { params: { amount } });
+
+			const stripe = await getStripe();
+
+			//************* redirect to checkout *************//
+			stripe.redirectToCheckout({ sessionId: data.id });
+			setPaymentLoading(false);
+
+		} catch (error) {
+			setPaymentLoading(false);
+			console.log(error);
+			toast.error(error.message);
 		}
 	};
 
@@ -193,10 +217,15 @@ export default function RoomDetails() {
 
 							{available && user && (
 								<button
-									onClick={newBookingHandler}
 									className='button-3d py-3 booking-btn'
+									onClick={() =>
+										bookRoom(room._id, room.pricePerNight)
+									}
+									disabled={
+										bookingLoading || paymentLoading ? true : false
+									}
 								>
-									Pay
+									Pay - ${daysOfStay * room.pricePerNight}
 								</button>
 							)}
 						</div>
