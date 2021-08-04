@@ -12,6 +12,7 @@
   "dependencies": {
     "@material-ui/core": "4.11.3",
     "@material-ui/icons": "4.11.2",
+    "@stripe/stripe-js": "1.14.0",
     "axios": "0.21.1",
     "bcryptjs": "2.4.3",
     "cloudinary": "1.25.1",
