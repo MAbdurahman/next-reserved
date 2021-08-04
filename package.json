@@ -28,6 +28,7 @@
     "next-connect": "^0.10.1",
     "next-redux-wrapper": "6.0.2",
     "nodemailer": "^6.6.3",
+    "raw-body": "2.4.1",
     "react": "17.0.2",
     "react-bootstrap": "1.5.2",
     "react-datepicker": "3.8.0",
@@ -38,6 +39,7 @@
     "redux": "4.1.0",
     "redux-devtools-extension": "2.13.9",
     "redux-thunk": "2.3.0",
+    "stripe": "8.138.0",
     "validator": "13.6.0"
   },
   "devDependencies": {
