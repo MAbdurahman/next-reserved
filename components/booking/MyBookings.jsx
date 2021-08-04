@@ -88,7 +88,7 @@ export default function MyBookings() {
 			const data = {
 				documentTitle: 'Reservation Invoice', //Defaults to INVOICE
 				currency: 'USD',
-				taxNotation: 'gst', //vat or gst
+				taxNotation: 'vat', //vat or gst
 				marginTop: 25,
 				marginRight: 25,
 				marginLeft: 25,
@@ -97,7 +97,7 @@ export default function MyBookings() {
 					'https://res.cloudinary.com/mdbdrrhm/image/upload/v1627728092/next-reserve/miscellaneous/project-logo_yjikyh.png',
 				sender: {
 					company: 'e-Reserve',
-					address: '1234 SomeStreet Ave. #67',
+					address: '1234 SomeStreet Ave. #100',
 					zip: 'SomeCity',
 					city: 'SomeState',
 					country: '11235-3747',
