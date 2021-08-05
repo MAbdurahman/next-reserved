@@ -23,7 +23,7 @@ module.exports = {
 		STRIPE_SECRET_KEY:
 			'sk_test_51JKNTyB0RTWTbgzIqktyjDPthoNKdZytf7h7WEEVtWtLWgJQyAu4Nn0yE1Km31h9N1n3bZDWSA42m06xw7iao3ZD00yMddj0Cp',
 
-		STRIPE_WEBHOOK_SECRET: '',
+		STRIPE_WEBHOOK_SECRET: 'whsec_54uoHzVmTf9PcTtX0etJalun53H1mWeM',
 	},
 	images: {
 		domains: ['res.cloudinary.com'],
