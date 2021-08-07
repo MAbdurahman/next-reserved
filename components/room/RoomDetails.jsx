@@ -17,6 +17,8 @@ import {
 import { CHECK_BOOKING_RESET } from '../../redux/constants/bookingConstants';
 import getStripe from './../../utils/getStripe';
 
+
+
 export default function RoomDetails() {
 	//**************** variables ****************//
 	const [checkInDate, setCheckInDate] = useState();
