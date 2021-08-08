@@ -18,7 +18,6 @@ import { CHECK_BOOKING_RESET } from '../../redux/constants/bookingConstants';
 import getStripe from './../../utils/getStripe';
 
 
-
 export default function RoomDetails() {
 	//**************** variables ****************//
 	const [checkInDate, setCheckInDate] = useState();
@@ -39,6 +38,7 @@ export default function RoomDetails() {
 	dates.forEach(date => {
 		excludedDates.push(new Date(date));
 	});
+
 	const getDaysOfStay = (checkInDate, checkOutDate) => {
 		let oneDay_milliSeconds = 86400000;
 		const numberOfDays =
