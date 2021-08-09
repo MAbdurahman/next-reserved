@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { Carousel } from 'react-bootstrap';
 import RoomFeatures from './RoomFeatures';
+import NewReview from "./../review/NewReview";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { clearErrors } from './../../redux/actions/roomActions';
@@ -233,6 +234,8 @@ export default function RoomDetails() {
 						</div>
 					</div>
 				</div>
+				
+				<NewReview />
 
 				<div className='reviews w-75'>
 					<h3>Reviews:</h3>

@@ -33,6 +33,7 @@
   --tan-one: #dccfb9;
   --tan-two: #9b5a1a;
   --gold: #d5a021;
+  --lt-gold:#e7c46c;
   --beige: #ede7d9;
   --beige-dk: #e6ddce;
   --light-green: #93a880;
@@ -707,6 +708,17 @@ div.react-datepicker div.react-datepicker_day:active {
   color: var(--button-background);
 }
 
+
+/*=============================================
+          New Review
+================================================*/
+.gold {
+  color: var(--gold);
+}
+.light-gold {
+  color: var(--lt-gold);
+}
+
 /* ==========================================
         Styles from Original
 ============================================= */
@@ -1039,6 +1051,7 @@ nav {
 .ratings {
   font-size: 1.2rem;
   color: #e61e4d;
+  color: var(--gold);
 }
 
 #no_of_reviews {
@@ -1133,10 +1146,12 @@ nav {
 
 .red {
   color: #e61e4d;
+  color: var(--gold);
 }
 
 .light-red {
   color: #f74f77;
+  color: var(--lt-gold);
 }
 
 /* Footer */

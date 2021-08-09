@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { allRoomsReducer, roomDetailsReducer } from "./roomReducers";
+import { allRoomsReducer, roomDetailsReducer, newReviewReducer } from "./roomReducers";
 import {
 	authReducer,
 	userReducer,
@@ -21,7 +21,8 @@ const reducers = combineReducers({
    checkBooking: checkBookingReducer,
    bookedDates: bookedDatesReducer,
    bookings: bookingsReducer,
-   bookingDetails: bookingDetailsReducer
+   bookingDetails: bookingDetailsReducer,
+   newReview: newReviewReducer
    
 })
 
