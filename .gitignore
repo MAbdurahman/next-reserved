@@ -75,3 +75,4 @@ debug.log
 .env
 .eslintcache
 config.env
+next.config.js
