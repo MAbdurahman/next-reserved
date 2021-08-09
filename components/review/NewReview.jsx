@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
-import { newReview } from './../../redux/actions/roomActions';
+import {
+	newReview,
+	checkReviewAvailability,
+	clearErrors,
+} from './../../redux/actions/roomActions';
 import { NEW_REVIEW_RESET } from './../../redux/constants/roomConstants';
 
 export default function NewReview() {
@@ -14,14 +18,14 @@ export default function NewReview() {
 	const router = useRouter();
 
 	const { error, success } = useSelector(state => state.newReview);
-	// const { reviewAvailable } = useSelector(state => state.checkReview);
+	const { reviewAvailable } = useSelector(state => state.checkReview);
 
 	const { id } = router.query;
 	//**************** functions ****************//
 	useEffect(() => {
-/* 		if (id !== undefined) {
+		if (id !== undefined) {
 			dispatch(checkReviewAvailability(id));
-		} */
+		}
 
 		if (error) {
 			toast.error(error);
@@ -34,7 +38,7 @@ export default function NewReview() {
 
 			router.push(`/room/${id}`);
 		}
-	}, [dispatch, success, error]);
+	}, [dispatch, success, error, id]);
 
 	const submitHandler = () => {
 		const reviewData = {
@@ -85,17 +89,18 @@ export default function NewReview() {
 	}
 	return (
 		<>
-			<button
-				id='review_btn'
-				type='button'
-				className='button-3d mt-4 mb-5'
-				data-toggle='modal'
-				data-target='#ratingModal'
-				onClick={setUserRatings}
-			>
-				Submit Your Review
-			</button>
-
+			{reviewAvailable && (
+				<button
+					id='review_btn'
+					type='button'
+					className='button-3d mt-4 mb-5'
+					data-toggle='modal'
+					data-target='#ratingModal'
+					onClick={setUserRatings}
+				>
+					Make A Review
+				</button>
+			)}
 			<div
 				className='modal fade'
 				id='ratingModal'
@@ -105,7 +110,7 @@ export default function NewReview() {
 				aria-hidden='true'
 			>
 				<div className='modal-dialog' role='document'>
-					<div className='modal-content'>
+					<div className='modal-content review-box'>
 						<div className='modal-header'>
 							<h5 className='modal-title' id='ratingModalLabel'>
 								Room Review
@@ -162,5 +167,4 @@ export default function NewReview() {
 			</div>
 		</>
 	);
-
 }

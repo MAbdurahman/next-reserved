@@ -1,4 +1,5 @@
 import Room from '../models/roomModel';
+import Booking from '../models/bookingModel';
 import ErrorHandler from '../utils/errorHandler';
 import catchAsyncErrors from '../middlewares/catchAsyncErrors';
 import APIFeatures from './../utils/apiFeatures';
@@ -129,7 +130,6 @@ const createRoomReview = catchAsyncErrors(async (req, res) => {
 				review.rating = rating;
 			}
 		});
-
 	} else {
 		room.reviews.push(review);
 		room.numOfReviews = room.reviews.length;
@@ -144,16 +144,38 @@ const createRoomReview = catchAsyncErrors(async (req, res) => {
 	res.status(200).json({
 		success: true,
 	});
-}); /*===============================================================
-            Delete Room => (DELETE)/api/rooms/:id
-==================================================================*/
-/*===============================================================
-            Delete Room => (DELETE)/api/rooms/:id
-==================================================================*/
-/*===============================================================
-            Delete Room => (DELETE)/api/rooms/:id
-==================================================================*/ /*===============================================================
-            Delete Room => (DELETE)/api/rooms/:id
-==================================================================*/
+});
 
-export { allRooms, newRoom, getSingleRoom, updateRoom, deleteRoom, createRoomReview};
+/*====================================================================================
+      Check Review Availability => (GET)/api/review/check_review_availability
+=======================================================================================*/
+const checkReviewAvailability = catchAsyncErrors(async (req, res) => {
+	const { roomId } = req.query;
+
+	const bookings = await Booking.find({ user: req.user._id, room: roomId });
+
+	let isReviewAvailable = false;
+	if (bookings.length > 0) isReviewAvailable = true;
+
+	res.status(200).json({
+		success: true,
+		isReviewAvailable,
+	});
+}); 
+/*===============================================================
+            Delete Room => (DELETE)/api/rooms/:id
+==================================================================*/
+/*===============================================================
+            Delete Room => (DELETE)/api/rooms/:id
+==================================================================*/
+/*===============================================================
+            Delete Room => (DELETE)/api/rooms/:id
+==================================================================*/ export {
+	allRooms,
+	newRoom,
+	getSingleRoom,
+	updateRoom,
+	deleteRoom,
+	createRoomReview,
+	checkReviewAvailability
+};

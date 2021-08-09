@@ -126,6 +126,35 @@ export const newReview = reviewData => async dispatch => {
 	}
 };
 
+/*=======================================================================================
+      Check Review Availability  => (Get)/api/reviews/check_availability?roomId
+==========================================================================================*/
+export const checkReviewAvailability = roomId => async dispatch => {
+	try {
+		dispatch({ type: REVIEW_AVAILABILITY_REQUEST });
+
+		const { data } = await axios.get(
+			`/api/reviews/check_review_availability?roomId=${roomId}`
+		);
+
+		dispatch({
+			type: REVIEW_AVAILABILITY_SUCCESS,
+			payload: data.isReviewAvailable,
+		});
+	} catch (error) {
+		dispatch({
+			type: REVIEW_AVAILABILITY_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
+/*===============================================================
+      (admin) Delete User  => (DELETE)/api/users/:id
+==================================================================*/
+/*===============================================================
+      (admin) Delete User  => (DELETE)/api/users/:id
+==================================================================*/
+
 /*======================================================
       Clear Errors
 =========================================================*/

@@ -712,6 +712,9 @@ div.react-datepicker div.react-datepicker_day:active {
 /*=============================================
           New Review
 ================================================*/
+.review-box {
+  background-color: var(--beige-dk);
+}
 .gold {
   color: var(--gold);
 }

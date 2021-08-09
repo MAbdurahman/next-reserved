@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { Carousel } from 'react-bootstrap';
 import RoomFeatures from './RoomFeatures';
-import NewReview from "./../review/NewReview";
+import NewReview from './../review/NewReview';
+import ListReviews from './../review/ListReviews';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { clearErrors } from './../../redux/actions/roomActions';
@@ -17,7 +18,6 @@ import {
 } from '../../redux/actions/bookingActions';
 import { CHECK_BOOKING_RESET } from '../../redux/constants/bookingConstants';
 import getStripe from './../../utils/getStripe';
-
 
 export default function RoomDetails() {
 	//**************** variables ****************//
@@ -119,7 +119,6 @@ export default function RoomDetails() {
 			//************* redirect to checkout *************//
 			stripe.redirectToCheckout({ sessionId: data.id });
 			setPaymentLoading(false);
-
 		} catch (error) {
 			setPaymentLoading(false);
 			console.log(error);
@@ -234,32 +233,15 @@ export default function RoomDetails() {
 						</div>
 					</div>
 				</div>
-				
+
 				<NewReview />
-
-				<div className='reviews w-75'>
-					<h3>Reviews:</h3>
-					<hr />
-					<div className='review-card my-3'>
-						<div className='rating-outer'>
-							<div className='rating-inner'></div>
-						</div>
-						<p className='review_user'>by John</p>
-						<p className='review_comment'>Good Quality</p>
-
-						<hr />
-					</div>
-
-					<div className='review-card my-3'>
-						<div className='rating-outer'>
-							<div className='rating-inner'></div>
-						</div>
-						<p className='review_user'>by John</p>
-						<p className='review_comment'>Good Quality</p>
-
-						<hr />
-					</div>
-				</div>
+				{room.reviews && room.reviews.length > 0 ? (
+					<ListReviews reviews={room.reviews} />
+				) : (
+					<p>
+						<b>No Reviews on this room</b>
+					</p>
+				)}
 			</div>
 		</>
 	);
