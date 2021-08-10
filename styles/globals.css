@@ -33,7 +33,7 @@
   --tan-one: #dccfb9;
   --tan-two: #9b5a1a;
   --gold: #d5a021;
-  --lt-gold:#e7c46c;
+  --lt-gold: #e7c46c;
   --beige: #ede7d9;
   --beige-dk: #e6ddce;
   --light-green: #93a880;
@@ -224,6 +224,7 @@ input[type=number] {
   -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 .button-gold:focus,
 .button-gold:hover,
 .button-gold:active,
@@ -568,11 +569,12 @@ div.react-datepicker div.react-datepicker_day {
   -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 div.react-datepicker div.react-datepicker_day:focus,
 div.react-datepicker div.react-datepicker_day:hover,
 div.react-datepicker div.react-datepicker_day:active {
-    color: var(--beige) !important;
-    background-color: #bb732b;
+  color: var(--beige) !important;
+  background-color: #bb732b;
 }
 
 /*=============================================
@@ -715,9 +717,22 @@ div.react-datepicker div.react-datepicker_day:active {
 .review-box {
   background-color: var(--beige-dk);
 }
+
+h5#ratingModalLabel.modal-title {
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--brown);
+}
+
+div.modal-header {
+  border-bottom: 2px solid var(--footer-color);
+  border-bottom-color: rgba(79, 44, 29, .5);
+}
+
 .gold {
   color: var(--gold);
 }
+
 .light-gold {
   color: var(--lt-gold);
 }
@@ -1141,6 +1156,9 @@ nav {
   font-size: 3rem;
   padding-left: 0.9rem;
   color: #e3e3e3;
+  color: rgb(223, 168, 50);
+  color: #e7d198;
+  ;
 }
 
 .star:first-child {

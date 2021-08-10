@@ -98,7 +98,7 @@ export default function NewReview() {
 					data-target='#ratingModal'
 					onClick={setUserRatings}
 				>
-					Make A Review
+					Write A Review
 				</button>
 			)}
 			<div
