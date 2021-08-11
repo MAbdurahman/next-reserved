@@ -93,7 +93,7 @@ export default function NewReview() {
 				<button
 					id='review_btn'
 					type='button'
-					className='button-3d mt-4 mb-5'
+					className='button-3d mt-1 mb-4'
 					data-toggle='modal'
 					data-target='#ratingModal'
 					onClick={setUserRatings}

@@ -171,7 +171,7 @@ export default function RoomDetails() {
 							</Carousel.Item>
 						))}
 				</Carousel>
-				<div className='row my-5'>
+				<div className='row mt-5 mb-3'>
 					<div className='col-12 col-md-6 col-lg-8'>
 						<h3>Description</h3>
 						<p>{room.description}</p>

@@ -714,6 +714,9 @@ div.react-datepicker div.react-datepicker_day:active {
 /*=============================================
           New Review
 ================================================*/
+button#review_btn.button-3d {
+  margin-left: -.5em;
+}
 .review-box {
   background-color: var(--beige-dk);
 }
@@ -1173,6 +1176,7 @@ nav {
 .light-red {
   color: #f74f77;
   color: var(--lt-gold);
+  color: var(--gold);
 }
 
 /* Footer */
