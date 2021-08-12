@@ -111,11 +111,11 @@ export default function AllRooms() {
 					<h1 className='my-5'>
 						{`${rooms && rooms.length} Rooms`}
 
-						<Link href='/admin/rooms/new'>
+{/* 						<Link href='/admin/rooms/new'>
 							<a className='mt-0 btn text-white float-right new-room-btn'>
 								Create Room
 							</a>
-						</Link>
+						</Link> */}
 					</h1>
 
 					<MDBDataTable

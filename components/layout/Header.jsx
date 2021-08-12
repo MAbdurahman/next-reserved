@@ -68,7 +68,7 @@ export default function Header() {
 										</Link>
 
 										<Link href='/admin/bookings'>
-											<a className='dropdown-item'>Bookings</a>
+											<a className='dropdown-item'>Reservations</a>
 										</Link>
 
 										<Link href='/admin/users'>
