@@ -61,7 +61,6 @@ export const getRooms = (
 			type: ALL_ROOMS_SUCCESS,
 			payload: data,
 		});
-		
 	} catch (error) {
 		dispatch({
 			type: ALL_ROOMS_FAIL,
@@ -148,6 +147,40 @@ export const checkReviewAvailability = roomId => async dispatch => {
 		});
 	}
 };
+/*===============================================================
+      (admin) Get All Rooms  => (GET)/api/admin/rooms
+==================================================================*/
+export const getAdminRooms = () => async dispatch => {
+	try {
+		dispatch({ type: ADMIN_ROOMS_REQUEST });
+
+		const { data } = await axios.get(`/api/admin/rooms`);
+
+		dispatch({
+			type: ADMIN_ROOMS_SUCCESS,
+			payload: data.rooms,
+		});
+	} catch (error) {
+		console.log(error);
+
+		dispatch({
+			type: ADMIN_ROOMS_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
+/*===============================================================
+      (admin) Delete User  => (DELETE)/api/users/:id
+==================================================================*/
+/*===============================================================
+      (admin) Delete User  => (DELETE)/api/users/:id
+==================================================================*/
+/*===============================================================
+      (admin) Delete User  => (DELETE)/api/users/:id
+==================================================================*/
+/*===============================================================
+      (admin) Delete User  => (DELETE)/api/users/:id
+==================================================================*/
 /*===============================================================
       (admin) Delete User  => (DELETE)/api/users/:id
 ==================================================================*/

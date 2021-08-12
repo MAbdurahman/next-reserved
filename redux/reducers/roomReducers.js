@@ -1,4 +1,4 @@
-import { startSession } from "mongoose";
+import { startSession } from 'mongoose';
 import {
 	ALL_ROOMS_SUCCESS,
 	ALL_ROOMS_FAIL,
@@ -41,6 +41,11 @@ import {
 =========================================================*/
 export const allRoomsReducer = (state = { rooms: [] }, action) => {
 	switch (action.type) {
+		case ADMIN_ROOMS_REQUEST:
+			return {
+				loading: true,
+			};
+
 		case ALL_ROOMS_SUCCESS:
 			return {
 				roomsCount: action.payload.roomsCount,
@@ -48,10 +53,19 @@ export const allRoomsReducer = (state = { rooms: [] }, action) => {
 				filteredRoomsCount: action.payload.filteredRoomsCount,
 				rooms: action.payload.rooms,
 			};
+
+		case ADMIN_ROOMS_SUCCESS:
+			return {
+				loading: false,
+				rooms: action.payload,
+			};
+
 		case ALL_ROOMS_FAIL:
+		case ADMIN_ROOMS_FAIL:
 			return {
 				error: action.payload,
 			};
+			
 		case CLEAR_ERRORS:
 			return {
 				...state,
