@@ -161,10 +161,18 @@ const checkReviewAvailability = catchAsyncErrors(async (req, res) => {
 		success: true,
 		isReviewAvailable,
 	});
-}); 
-/*===============================================================
-            Delete Room => (DELETE)/api/rooms/:id
-==================================================================*/
+});
+/*=====================================================================
+   (admin) Get All Rooms => (GET)/api/admin/rooms
+========================================================================*/
+const allAdminRooms = catchAsyncErrors(async (req, res) => {
+	const rooms = await Room.find();
+
+	res.status(200).json({
+		success: true,
+		rooms,
+	});
+});
 /*===============================================================
             Delete Room => (DELETE)/api/rooms/:id
 ==================================================================*/
@@ -177,5 +185,6 @@ const checkReviewAvailability = catchAsyncErrors(async (req, res) => {
 	updateRoom,
 	deleteRoom,
 	createRoomReview,
-	checkReviewAvailability
+	checkReviewAvailability,
+	allAdminRooms
 };
