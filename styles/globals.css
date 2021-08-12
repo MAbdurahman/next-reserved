@@ -1187,8 +1187,9 @@ nav {
   width: 100%;
 } */
 
-/* Stripe payment design */
-
+/* ==========================================
+        Stripe Payment Design
+============================================= */
 #stripe_pay_btn {
   white-space: nowrap;
   border: 0;
@@ -1273,6 +1274,10 @@ input::placeholder {
   color: var(--green);
 }
 
+
+/* ==========================================
+        404 Page
+============================================= */
 /* 404 Page */
 
 .page-not-found-wrapper {
@@ -1286,9 +1291,19 @@ input::placeholder {
 
 #title_404 {
   color: #e61e4d;
+  color: var(--button-background);
+  color: var(--gold);
   font-size: 7rem;
 }
 
 #description_404 {
   color: grey;
+  color: var(--green);
+  letter-spacing: 1px;
+}
+
+.page-not-found-wrapper button.button-3d {
+  width: 20%;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
 }
