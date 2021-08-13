@@ -177,8 +177,43 @@ export const checkReviewReducer = (
 	}
 };
 /*======================================================
-      Room Details Reducer
+				New Room Reducer
 =========================================================*/
+export const newRoomReducer = (state = { room: {} }, action) => {
+	switch (action.type) {
+		case NEW_ROOM_REQUEST:
+			return {
+				loading: true,
+			};
+
+		case NEW_ROOM_SUCCESS:
+			return {
+				loading: false,
+				success: action.payload.success,
+				room: action.payload.room,
+			};
+
+		case NEW_ROOM_RESET:
+			return {
+				success: false,
+			};
+
+		case NEW_ROOM_FAIL:
+			return {
+				loading: false,
+				error: action.payload,
+			};
+
+		case CLEAR_ERRORS:
+			return {
+				...state,
+				error: null,
+			};
+
+		default:
+			return state;
+	}
+};
 /*======================================================
       Room Details Reducer
 =========================================================*/

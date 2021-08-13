@@ -170,8 +170,31 @@ export const getAdminRooms = () => async dispatch => {
 	}
 };
 /*===============================================================
-      (admin) Delete User  => (DELETE)/api/users/:id
+      (admin) New Room  => (POST)/api/admin/rooms
 ==================================================================*/
+export const newRoom = roomData => async dispatch => {
+	try {
+		dispatch({ type: NEW_ROOM_REQUEST });
+
+		const config = {
+			header: {
+				'Content-Type': 'application/json',
+			},
+		};
+
+		const { data } = await axios.post(`/api/rooms`, roomData, config);
+
+		dispatch({
+			type: NEW_ROOM_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		dispatch({
+			type: NEW_ROOM_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
 /*===============================================================
       (admin) Delete User  => (DELETE)/api/users/:id
 ==================================================================*/

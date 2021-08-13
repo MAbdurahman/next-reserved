@@ -1,5 +1,6 @@
 import Room from '../models/roomModel';
 import Booking from '../models/bookingModel';
+import cloudinary from 'cloudinary';
 import ErrorHandler from '../utils/errorHandler';
 import catchAsyncErrors from '../middlewares/catchAsyncErrors';
 import APIFeatures from './../utils/apiFeatures';
@@ -33,19 +34,30 @@ const allRooms = catchAsyncErrors(async (req, res, next) => {
             Create A New Room => (post)/api/rooms
 ==================================================================*/
 const newRoom = catchAsyncErrors(async (req, res) => {
-	try {
-		const room = await Room.create(req.body);
+	const images = req.body.images;
 
-		res.status(200).json({
-			success: true,
-			room,
+	let imagesLinks = [];
+
+	for (let i = 0; i < images.length; i++) {
+		const result = await cloudinary.v2.uploader.upload(images[i], {
+			folder: 'next-reserve/rooms',
 		});
-	} catch (error) {
-		res.status(400).json({
-			success: false,
-			error: error.message,
+
+		imagesLinks.push({
+			public_id: result.public_id,
+			url: result.secure_url,
 		});
 	}
+
+	req.body.images = imagesLinks;
+	req.body.user = req.user._id;
+
+	const room = await Room.create(req.body);
+
+	res.status(200).json({
+		success: true,
+		room,
+	});
 });
 
 /*===============================================================
@@ -105,7 +117,7 @@ const deleteRoom = catchAsyncErrors(async (req, res) => {
 });
 
 /*===============================================================
-         Create A New Room => (PUT)/api/reviews
+      Create A New RoomReview => (PUT)/api/reviews
 ==================================================================*/
 const createRoomReview = catchAsyncErrors(async (req, res) => {
 	const { rating, comment, roomId } = req.body;
