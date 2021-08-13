@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 
 import { getAdminRooms } from './../../redux/actions/roomActions';
 import { DELETE_ROOM_RESET } from './../../redux/constants/roomConstants';
+import RoomItem from './../room/RoomItem';
 
 export default function AllRooms() {
 	//**************** variables ****************//
@@ -111,11 +112,11 @@ export default function AllRooms() {
 					<h1 className='my-5'>
 						{`${rooms && rooms.length} Rooms`}
 
-{/* 						<Link href='/admin/rooms/new'>
-							<a className='mt-0 btn text-white float-right new-room-btn'>
-								Create Room
+						<Link href='/admin/rooms/new'>
+							<a className='mt-0 button-3d float-right'>
+								Create New Room
 							</a>
-						</Link> */}
+						</Link>
 					</h1>
 
 					<MDBDataTable
