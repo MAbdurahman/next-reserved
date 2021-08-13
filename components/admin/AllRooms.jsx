@@ -79,13 +79,13 @@ export default function AllRooms() {
 					actions: (
 						<>
 							<Link href={`/admin/rooms/${room._id}`}>
-								<a className='btn btn-primary'>
+								<a className='btn button-green'>
 									<i className='fa fa-pencil'></i>
 								</a>
 							</Link>
 
 							<button
-								className='btn btn-danger mx-2'
+								className='btn button-red mx-2'
 								onClick={() => deleteRoomHandler(room._id)}
 							>
 								<i className='fa fa-trash'></i>

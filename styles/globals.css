@@ -225,12 +225,26 @@ input[type=number] {
   -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.button-red {
+  color: var(--beige-dk);
+  background-color: rgb(141, 19, 19);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+}
+
 .button-gold:focus,
 .button-gold:hover,
 .button-gold:active,
 .button-green:focus,
 .button-green:hover,
-.button-green:active {
+.button-green:active,
+.button-red:focus,
+.button-red:hover,
+.button-red:active {
   color: white;
 }
 
@@ -717,6 +731,7 @@ div.react-datepicker div.react-datepicker_day:active {
 button#review_btn.button-3d {
   margin-left: -.5em;
 }
+
 .review-box {
   background-color: var(--beige-dk);
 }
