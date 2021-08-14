@@ -201,3 +201,36 @@ export const forgotPasswordReducer = (state = {}, action) => {
 			return state;
 	}
 };
+
+/*=============================================
+      (admin) Get All Users Reducer
+================================================*/
+export const allUsersReducer = (state = { users: [] }, action) => {
+	switch (action.type) {
+		case ADMIN_USERS_REQUEST:
+			return {
+				loading: true,
+			};
+
+		case ADMIN_USERS_SUCCESS:
+			return {
+				loading: false,
+				users: action.payload,
+			};
+
+		case ADMIN_USERS_FAIL:
+			return {
+				loading: false,
+				error: action.payload,
+			};
+
+		case CLEAR_ERRORS:
+			return {
+				...state,
+				error: null,
+			};
+
+		default:
+			return state;
+	}
+};

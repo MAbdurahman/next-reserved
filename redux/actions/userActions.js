@@ -165,6 +165,26 @@ export const resetPassword = (token, passwords) => async dispatch => {
 };
 
 /*=============================================
+         (admin)  Get All Users
+================================================*/
+export const getAdminUsers = () => async dispatch => {
+	try {
+		dispatch({ type: ADMIN_USERS_REQUEST });
+
+		const { data } = await axios.get(`/api/admin/users`);
+
+		dispatch({
+			type: ADMIN_USERS_SUCCESS,
+			payload: data.users,
+		});
+	} catch (error) {
+		dispatch({
+			type: ADMIN_USERS_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
+/*=============================================
          Clear Errors
 ================================================*/
 export const clearErrors = () => async dispatch => {
