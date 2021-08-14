@@ -59,7 +59,10 @@ export default function NewRoom() {
 			images,
 		};
 
-		if (images.length === 0) return toast.error('Please upload images.');
+		if (images.length === 0) {
+			return toast.error('Please upload image(s)!');
+
+		}
 
 		dispatch(newRoom(roomData));
 	};

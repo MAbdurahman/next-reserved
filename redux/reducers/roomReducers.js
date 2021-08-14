@@ -217,7 +217,7 @@ export const newRoomReducer = (state = { room: {} }, action) => {
 /*======================================================
          Update Room Reducer
 =========================================================*/
-export const updateRoomReducer = (state = {}, action) => {
+export const roomReducer = (state = {}, action) => {
 	switch (action.type) {
 		case UPDATE_ROOM_REQUEST:
 		case DELETE_ROOM_REQUEST:
