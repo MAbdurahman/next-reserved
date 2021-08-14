@@ -149,5 +149,46 @@ export const bookingDetailsReducer = (state = { booking: {} }, action) => {
 	}
 };
 /*=============================================
+         Delete Booking Reducer
+================================================*/
+export const bookingReducer = (state = {}, action) => {
+	switch (action.type) {
+		case DELETE_BOOKING_REQUEST:
+			return {
+				loading: true,
+			};
+
+		case DELETE_BOOKING_SUCCESS:
+			return {
+				loading: false,
+				isDeleted: action.payload,
+			};
+
+		case DELETE_BOOKING_RESET:
+			return {
+				loading: false,
+				isDeleted: false,
+			};
+
+		case DELETE_BOOKING_FAIL:
+			return {
+				loading: false,
+				error: action.payload,
+			};
+
+		case CLEAR_ERRORS:
+			return {
+				...state,
+				error: null,
+			};
+
+		default:
+			return state;
+	}
+};
+/*=============================================
+         Check Booking Reducer
+================================================*/
+/*=============================================
          Check Booking Reducer
 ================================================*/

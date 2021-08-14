@@ -122,11 +122,46 @@ export const getBookingDetails = (authCookie, req, id) => async dispatch => {
 	}
 };
 /*=============================================
-         Check Booking 
+         Get Admin Bookings 
 ================================================*/
+export const getAdminBookings = () => async dispatch => {
+	try {
+		dispatch({ type: ADMIN_BOOKINGS_REQUEST });
+
+		const { data } = await axios.get(`/api/admin/bookings`);
+
+		dispatch({
+			type: ADMIN_BOOKINGS_SUCCESS,
+			payload: data.bookings,
+		});
+	} catch (error) {
+		dispatch({
+			type: ADMIN_BOOKINGS_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
+
 /*=============================================
-         Check Booking 
+         Delete Booking 
 ================================================*/
+export const deleteBooking = id => async dispatch => {
+	try {
+		dispatch({ type: DELETE_BOOKING_REQUEST });
+
+		const { data } = await axios.delete(`/api/admin/bookings/${id}`);
+
+		dispatch({
+			type: DELETE_BOOKING_SUCCESS,
+			payload: data.success,
+		});
+	} catch (error) {
+		dispatch({
+			type: DELETE_BOOKING_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
 
 /*=============================================
          Clear Errors

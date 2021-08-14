@@ -121,8 +121,6 @@ const myBookings = catchAsyncErrors(async (req, res) => {
 			select: 'name email',
 		});
 
-		// console.log(bookings)
-
 	res.status(200).json({
 		success: true,
 		bookings,
@@ -147,17 +145,51 @@ const getBookingDetails = catchAsyncErrors(async (req, res) => {
 		booking,
 	});
 });
-/*===============================================================
-            Get All Rooms => (GET)/api/rooms
-==================================================================*/
-/*===============================================================
-            Get All Rooms => (GET)/api/rooms
-==================================================================*/
+/*=====================================================================
+      (admin) Get All Bookings => (GET)/api/admin/bookings
+========================================================================*/
+const allAdminBookings = catchAsyncErrors(async (req, res) => {
+	const bookings = await Booking.find()
+		.populate({
+			path: 'room',
+			select: 'name pricePerNight images',
+		})
+		.populate({
+			path: 'user',
+			select: 'name email',
+		});
+
+	res.status(200).json({
+		success: true,
+		bookings,
+	});
+});
+
+/*===========================================================================
+            (admin) Delete Booking => (DELETE)/api/admin/bookings/:id
+==============================================================================*/
+const deleteBooking = catchAsyncErrors(async (req, res, next) => {
+	const booking = await Booking.findById(req.query.id);
+
+	if (!booking) {
+		return next(new ErrorHandler('Reservation with this ID was not found!', 400));
+	}
+
+	await booking.remove();
+
+	res.status(200).json({
+		success: true,
+	});
+});
+
+
 
 export {
 	newBooking,
 	checkRoomBookingAvailability,
 	checkBookedDatesOfRoom,
 	myBookings,
-	getBookingDetails
+	getBookingDetails,
+	allAdminBookings,
+	deleteBooking
 };
