@@ -184,7 +184,6 @@ const resetPassword = catchAsyncErrors(async (req, res, next) => {
 /*============================================================
       (admin) Get All Users => api/admin/users
 ===============================================================*/
-// Get all users   =>   /api/admin/users
 const allAdminUsers = catchAsyncErrors(async (req, res) => {
 	const users = await User.find();
 
@@ -193,15 +192,62 @@ const allAdminUsers = catchAsyncErrors(async (req, res) => {
 		users,
 	});
 });
-/*============================================================
-         Reset Password => api/password/reset/:token
-===============================================================*/
-/*============================================================
-         Reset Password => api/password/reset/:token
-===============================================================*/
-/*============================================================
-         Reset Password => api/password/reset/:token
-===============================================================*/
+/*==================================================================
+      (admin) Get User Details => api/admin/users/:id
+=====================================================================*/
+const getUserDetails = catchAsyncErrors(async (req, res) => {
+	const user = await User.findById(req.query.id);
+
+	if (!user) {
+		return next(new ErrorHandler('User with this ID was not found!', 400));
+	}
+
+	res.status(200).json({
+		success: true,
+		user,
+	});
+});
+/*=====================================================================
+      (admin) Update User Details => api/admin/users/:id
+========================================================================*/
+const updateUser = catchAsyncErrors(async (req, res) => {
+	const newUserData = {
+		name: req.body.name,
+		email: req.body.email,
+		role: req.body.role,
+	};
+
+	const user = await User.findByIdAndUpdate(req.query.id, newUserData, {
+		new: true,
+		runValidators: true,
+		useFindAndModify: false,
+	});
+
+	res.status(200).json({
+		success: true,
+	});
+});
+/*=====================================================================
+            (admin) Delete User => api/admin/users/:id
+========================================================================*/
+const deleteUser = catchAsyncErrors(async (req, res) => {
+	const user = await User.findById(req.query.id);
+
+	if (!user) {
+		return next(new ErrorHandler('User with this ID was not found!', 400));
+	}
+
+	//************* remove avatar *************//
+	const image_id = user.avatar.public_id;
+	await cloudinary.v2.uploader.destroy(image_id);
+
+	await user.remove();
+
+	res.status(200).json({
+		success: true,
+		user,
+	});
+});
 /*============================================================
          Reset Password => api/password/reset/:token
 ===============================================================*/
@@ -214,5 +260,8 @@ export {
 	updateProfile,
 	forgotPassword,
 	resetPassword,
-	allAdminUsers
+	allAdminUsers,
+	getUserDetails,
+	updateUser,
+	deleteUser
 };
