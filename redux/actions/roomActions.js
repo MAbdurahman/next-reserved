@@ -196,11 +196,52 @@ export const newRoom = roomData => async dispatch => {
 	}
 };
 /*===============================================================
-      (admin) Delete User  => (DELETE)/api/users/:id
+      (admin) Update Room  => (PUT)/api/rooms/:id
 ==================================================================*/
+export const updateRoom = (id, roomData) => async dispatch => {
+	try {
+		dispatch({ type: UPDATE_ROOM_REQUEST });
+
+		const config = {
+			header: {
+				'Content-Type': 'application/json',
+			},
+		};
+
+		const { data } = await axios.put(`/api/rooms/${id}`, roomData, config);
+
+		dispatch({
+			type: UPDATE_ROOM_SUCCESS,
+			payload: data.success,
+		});
+	} catch (error) {
+		dispatch({
+			type: UPDATE_ROOM_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
+
 /*===============================================================
-      (admin) Delete User  => (DELETE)/api/users/:id
+		(admin) Delete Room  => (DELETE)/api/rooms/:id
 ==================================================================*/
+export const deleteRoom = id => async dispatch => {
+	try {
+		dispatch({ type: DELETE_ROOM_REQUEST });
+
+		const { data } = await axios.delete(`/api/rooms/${id}`);
+
+		dispatch({
+			type: DELETE_ROOM_SUCCESS,
+			payload: data.success,
+		});
+	} catch (error) {
+		dispatch({
+			type: DELETE_ROOM_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
 /*===============================================================
       (admin) Delete User  => (DELETE)/api/users/:id
 ==================================================================*/
