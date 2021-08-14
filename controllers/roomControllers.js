@@ -77,13 +77,36 @@ const getSingleRoom = catchAsyncErrors(async (req, res, next) => {
 });
 
 /*===============================================================
-            Update Room Details => (PUT)/api/rooms/:id
+      (admin) Update Room Details => (PUT)/api/rooms/:id
 ==================================================================*/
 const updateRoom = catchAsyncErrors(async (req, res, next) => {
 	const room = await Room.findById(req.query.id);
 
 	if (!room) {
 		return next(new ErrorHandler('A room with this ID was not found!', 404));
+	}
+
+	if (req.body.images) {
+		//******** delete images associated the room ********//
+		for (let i = 0; i < room.images.length; i++) {
+			await cloudinary.v2.uploader.destroy(room.images[i].public_id);
+		}
+
+		let imagesLinks = [];
+		const images = req.body.images;
+
+		for (let i = 0; i < images.length; i++) {
+			const result = await cloudinary.v2.uploader.upload(images[i], {
+				folder: 'next-reserve/rooms',
+			});
+
+			imagesLinks.push({
+				public_id: result.public_id,
+				url: result.secure_url,
+			});
+		}
+
+		req.body.images = imagesLinks;
 	}
 
 	const updateRoom = await Room.findByIdAndUpdate(req.query.id, req.body, {
@@ -106,6 +129,11 @@ const deleteRoom = catchAsyncErrors(async (req, res) => {
 
 	if (!room) {
 		return next(new ErrorHandler('A room with this ID was not found!', 404));
+	}
+
+	//******** delete images associated the room ********//
+	for (let i = 0; i < room.images.length; i++) {
+		await cloudinary.v2.uploader.destroy(room.images[i].public_id);
 	}
 
 	await room.remove();
@@ -180,7 +208,6 @@ const checkReviewAvailability = catchAsyncErrors(async (req, res) => {
 const allAdminRooms = catchAsyncErrors(async (req, res) => {
 	const rooms = await Room.find();
 
-	
 	res.status(200).json({
 		success: true,
 		rooms,
@@ -191,7 +218,7 @@ const allAdminRooms = catchAsyncErrors(async (req, res) => {
 ==================================================================*/
 /*===============================================================
             Delete Room => (DELETE)/api/rooms/:id
-==================================================================*/ 
+==================================================================*/
 export {
 	allRooms,
 	newRoom,
@@ -200,5 +227,5 @@ export {
 	deleteRoom,
 	createRoomReview,
 	checkReviewAvailability,
-	allAdminRooms
+	allAdminRooms,
 };

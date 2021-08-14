@@ -92,7 +92,7 @@ export default function NewRoom() {
 						onSubmit={submitHandler}
 						enctype='multipart/form-data'
 					>
-						<h1 className='mb-4'>New Room</h1>
+						<h1 className='mb-4'>Create New Room</h1>
 						<div className='form-group'>
 							<label htmlFor='name_field'>Name</label>
 							<input

@@ -5,7 +5,7 @@ import NewRoom from '../../../components/admin/NewRoom';
 
 export default function NewRoomPage() {
    return (
-      <Layout title='e-Reserve | New Room'>
+      <Layout title='e-Reserve | (admin) Create New Room'>
          <NewRoom />
       </Layout>
    )
