@@ -1300,11 +1300,13 @@ input::placeholder {
 .redColor {
   color: red;
   color: rgb(141, 19, 19);
+  font-weight: 800;
 }
 
 .greenColor {
   color: green;
   color: var(--green);
+  font-weight: 800;
 }
 
 

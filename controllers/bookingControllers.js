@@ -166,13 +166,13 @@ const allAdminBookings = catchAsyncErrors(async (req, res) => {
 });
 
 /*===========================================================================
-            (admin) Delete Booking => (DELETE)/api/admin/bookings/:id
+         (admin) Delete Booking => (DELETE)/api/admin/bookings/:id
 ==============================================================================*/
 const deleteBooking = catchAsyncErrors(async (req, res, next) => {
 	const booking = await Booking.findById(req.query.id);
 
 	if (!booking) {
-		return next(new ErrorHandler('Reservation with this ID was not found!', 400));
+		return next(new ErrorHandler('Reservation with this ID was not found!', 404));
 	}
 
 	await booking.remove();

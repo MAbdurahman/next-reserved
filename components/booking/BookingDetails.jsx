@@ -64,8 +64,7 @@ export default function BookingDetails() {
 							{ <p className={isPaid ? 'greenColor' : 'redColor'}>
 								<b>{isPaid ? 'Paid' : 'Not Paid'}</b>
 							</p> }
-							{/* <p className='greenColor'><b>Paid</b></p> */}
-
+	
 							{user && user.role === 'admin' && (
 								<>
 									<h4 className='my-4'>Stripe Payment ID</h4>

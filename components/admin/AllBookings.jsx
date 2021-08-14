@@ -46,6 +46,10 @@ export default function AllBookings() {
 		}
 	}, [dispatch, deleteError, isDeleted]);
 
+	const deleteBookingHandler = id => {
+		dispatch(deleteBooking(id));
+	};
+
 	const setBookings = () => {
 		const data = {
 			columns: [
@@ -113,10 +117,6 @@ export default function AllBookings() {
 		return data;
 	};
 
-	const deleteBookingHandler = id => {
-		dispatch(deleteBooking(id));
-	};
-
 	const downloadInvoice = async booking => {
 		const data = {
 			documentTitle: 'Reservation Invoice', //Defaults to INVOICE
@@ -169,7 +169,9 @@ export default function AllBookings() {
 				<Loader />
 			) : (
 				<>
-					<h1 className='my-5'>{`${bookings && bookings.length} Reservations`}</h1>
+					<h1 className='my-5'>{`${
+						bookings && bookings.length
+					} Reservations`}</h1>
 
 					<MDBDataTable
 						data={setBookings()}
