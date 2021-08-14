@@ -3,7 +3,7 @@ import cloudinary from 'cloudinary';
 import absoluteUrl from 'next-absolute-url';
 import catchAsyncErrors from './../middlewares/catchAsyncErrors';
 import ErrorHandler from './../utils/errorHandler';
-import sendEmail from "./../utils/sendEmail";
+import sendEmail from './../utils/sendEmail';
 import crypto from 'crypto';
 
 //**************** cloudinary configuration ****************//
@@ -118,7 +118,6 @@ const forgotPassword = catchAsyncErrors(async (req, res, next) => {
 
 	const message = `Password reset url is as follow: \n ${resetUrl} \n\n\ If you did not request a password reset, ignore this email.`;
 
-
 	try {
 		await sendEmail({
 			email: user.email,
@@ -130,7 +129,6 @@ const forgotPassword = catchAsyncErrors(async (req, res, next) => {
 			success: true,
 			message: `Email sent to: ${user.email}`,
 		});
-
 	} catch (error) {
 		user.resetPasswordToken = undefined;
 		user.resetPasswordExpire = undefined;
@@ -139,14 +137,12 @@ const forgotPassword = catchAsyncErrors(async (req, res, next) => {
 
 		return next(new ErrorHandler(error.message, 500));
 	}
-	
 });
 
 /*============================================================
          Reset Password => api/password/reset/:token
 ===============================================================*/
 const resetPassword = catchAsyncErrors(async (req, res, next) => {
-
 	//*********** hash url token **********//
 	const resetPasswordToken = crypto
 		.createHash('sha256')
@@ -185,10 +181,38 @@ const resetPassword = catchAsyncErrors(async (req, res, next) => {
 	});
 });
 
+/*============================================================
+      (admin) Get All Users => api/admin/users
+===============================================================*/
+// Get all users   =>   /api/admin/users
+const allAdminUsers = catchAsyncErrors(async (req, res) => {
+	const users = await User.find();
+
+	res.status(200).json({
+		success: true,
+		users,
+	});
+});
+/*============================================================
+         Reset Password => api/password/reset/:token
+===============================================================*/
+/*============================================================
+         Reset Password => api/password/reset/:token
+===============================================================*/
+/*============================================================
+         Reset Password => api/password/reset/:token
+===============================================================*/
+/*============================================================
+         Reset Password => api/password/reset/:token
+===============================================================*/
+/*============================================================
+         Reset Password => api/password/reset/:token
+===============================================================*/
 export {
 	registerUser,
 	currentUserProfile,
 	updateProfile,
 	forgotPassword,
 	resetPassword,
+	allAdminUsers
 };
