@@ -11,7 +11,7 @@ const handler = nc({ onError });
 
 connectDatabase();
 
-handler.use(isAuthenticatedUser, authorizeRoles('admin').get(getUserDetails));
+handler.use(isAuthenticatedUser, authorizeRoles('admin')).get(getUserDetails);
 handler.use(isAuthenticatedUser, authorizeRoles('admin')).put(updateUser);
 handler.use(isAuthenticatedUser, authorizeRoles('admin')).delete(deleteUser);
 

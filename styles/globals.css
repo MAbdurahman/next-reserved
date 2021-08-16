@@ -773,6 +773,15 @@ div.modal-header {
   margin-right: auto;
   font-size: 1.333rem;
 }
+/*=============================================
+          Update User Form
+================================================*/
+.update-user-form-box button.button-3d {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.333rem;
+}
 /* ==========================================
         Styles from Original
 ============================================= */

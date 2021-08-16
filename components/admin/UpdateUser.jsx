@@ -68,7 +68,7 @@ export default function UpdateUser() {
 				<div className='container container-fluid'>
 					<div className='row wrapper'>
 						<div className='col-10 col-lg-5'>
-							<form className='shadow-lg' onSubmit={submitHandler}>
+							<form className='shadow-lg update-user-form-box' onSubmit={submitHandler}>
 								<h1 className='mt-2 mb-5'>Update User</h1>
 
 								<div className='form-group'>
@@ -112,7 +112,7 @@ export default function UpdateUser() {
 
 								<button
 									type='submit'
-									className='btn update-btn btn-block mt-4 mb-3'
+									className='button-3d mt-4 mb-3'
 								>
 									Update User
 								</button>
