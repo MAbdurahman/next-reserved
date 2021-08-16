@@ -228,7 +228,6 @@ const getRoomReviews = catchAsyncErrors(async (req, res) => {
 /*===============================================================
 		(admin) Delete Room Review => (DELETE)/api/reviews/:id
 ==================================================================*/
-// Delete room review - ADMIN   =>   /api/reviews
 const deleteReview = catchAsyncErrors(async (req, res) => {
 	const room = await Room.findById(req.query.roomId);
 

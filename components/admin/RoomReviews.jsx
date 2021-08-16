@@ -40,10 +40,14 @@ export default function RoomReviews() {
 		}
 
 		if (isDeleted) {
-			toast.success('Review is deleted.');
+			toast.success('Review has been deleted!');
 			dispatch({ type: DELETE_REVIEW_RESET });
 		}
 	}, [dispatch, error, roomId, deleteError, isDeleted]);
+
+	const deleteReviewHandler = id => {
+		dispatch(deleteReview(id, roomId));
+	};
 
 	const setReviews = () => {
 		const data = {
@@ -98,9 +102,6 @@ export default function RoomReviews() {
 		return data;
 	};
 
-	const deleteReviewHandler = id => {
-		dispatch(deleteReview(id, roomId));
-	};
 	return (
 		<div className='container container-fluid'>
 			<div className='row justify-content-center mt-5'>
