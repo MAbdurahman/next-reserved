@@ -10,10 +10,10 @@ import { toast } from 'react-toastify';
 
 import {
 	getAdminUsers,
-	// deleteUser,
+	deleteUser,
 	clearErrors,
 } from '../../redux/actions/userActions';
-// import { DELETE_USER_RESET } from '../../redux/constants/userConstants';
+import { DELETE_USER_RESET } from '../../redux/constants/userConstants';
 
 export default function AllUsers() {
 	//**************** variables ****************//
@@ -32,7 +32,7 @@ export default function AllUsers() {
 			dispatch(clearErrors());
 		}
 
-		/* if (deleteError) {
+		if (deleteError) {
 			toast.error(deleteError);
 			dispatch(clearErrors());
 		}
@@ -40,12 +40,11 @@ export default function AllUsers() {
 		if (isDeleted) {
 			router.push('/admin/users');
 			dispatch({ type: DELETE_USER_RESET });
-		} */
-	}, [dispatch]);
+		}
+	}, [dispatch, error, isDeleted, deleteError]);
 
 	const deleteUserHandler = id => {
-		// dispatch(deleteUser(id));
-      console.log(id);
+		dispatch(deleteUser(id));
 	};
 
 	const setUsers = () => {
