@@ -243,11 +243,48 @@ export const deleteRoom = id => async dispatch => {
 	}
 };
 /*===============================================================
-      (admin) Delete User  => (DELETE)/api/users/:id
+      (admin) Get Room Reviews  => (Get)/api/reviews/:id
 ==================================================================*/
-/*===============================================================
-      (admin) Delete User  => (DELETE)/api/users/:id
-==================================================================*/
+export const getRoomReviews = id => async dispatch => {
+	try {
+		dispatch({ type: GET_REVIEWS_REQUEST });
+
+		const { data } = await axios.get(`/api/reviews/?id=${id}`);
+
+		dispatch({
+			type: GET_REVIEWS_SUCCESS,
+			payload: data.reviews,
+		});
+	} catch (error) {
+		dispatch({
+			type: GET_REVIEWS_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
+
+/*========================================================================
+		(admin) Delete Review  => (DELETE)/api/reviews/:id & roomId
+===========================================================================*/
+export const deleteReview = (id, roomId) => async dispatch => {
+	try {
+		dispatch({ type: DELETE_REVIEW_REQUEST });
+
+		const { data } = await axios.delete(
+			`/api/reviews/?id=${id}&roomId=${roomId}`
+		);
+
+		dispatch({
+			type: DELETE_REVIEW_SUCCESS,
+			payload: data.success,
+		});
+	} catch (error) {
+		dispatch({
+			type: DELETE_REVIEW_FAIL,
+			payload: error.response.data.message,
+		});
+	}
+};
 /*===============================================================
       (admin) Delete User  => (DELETE)/api/users/:id
 ==================================================================*/
