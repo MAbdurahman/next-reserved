@@ -182,7 +182,11 @@ export const newRoom = roomData => async dispatch => {
 			},
 		};
 
+		console.log(roomData)
+
 		const { data } = await axios.post(`/api/rooms`, roomData, config);
+		
+		console.log(data)
 
 		dispatch({
 			type: NEW_ROOM_SUCCESS,
