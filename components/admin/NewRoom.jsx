@@ -67,7 +67,7 @@ export default function NewRoom() {
 		dispatch(newRoom(roomData));
 	};
 
-	const onChange = e => {
+	const onChangeHandler = e => {
 		const files = Array.from(e.target.files);
 
 		setImages([]);
@@ -274,7 +274,7 @@ export default function NewRoom() {
 									name='room_images'
 									className='custom-file-input'
 									id='customFile'
-									onChange={onChange}
+									onChange={onChangeHandler}
 									multiple
 								/>
 								<label
