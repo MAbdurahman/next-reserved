@@ -93,7 +93,7 @@ export default function NewRoom() {
 					<form
 						className='shadow-lg new-room-box'
 						onSubmit={submitHandler}
-						enctype='multipart/form-data'
+						encType='multipart/form-data'
 					>
 						<h1 className='mb-4'>Create New Room</h1>
 						<div className='form-group'>
