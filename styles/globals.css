@@ -1402,3 +1402,105 @@ div.about-info .about-info-text {
 @media only screen and (max-width: 479px) {
   /*...mobile portrait styles */
 }
+
+/************************ TESTIMONIALS *********************************/
+.testimonials {
+  /* background-image: url('../img/testimonials/testimonial-bg.jpg'); */
+  background-size: cover;
+  background-position: center;
+  background-color: var(--beige);
+  text-align: center;
+  padding-bottom: 4rem;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.testimonials h1 {
+  color: var(--brown);
+  padding: 3rem 0;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.testimonials-content {
+  text-align: center;
+  max-width: 53.125rem;
+  margin: 0 auto 1rem auto;
+  /* background: var(--primary-transparent-black); */
+}
+
+.myCarousel {
+  color: var(--footer-color);
+  background: transparent;
+  margin-top: -6%;
+  width: 54%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 6%;
+  padding-bottom: 8%;
+  padding-left: 5%;
+  padding-right: 5%;
+  height: 17.875rem;
+}
+
+.myCarousel h3 {
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.myCarousel p {
+  /* color: var(--primary-grey); */
+  letter-spacing: 1px;
+}
+li.dot {
+  background-color: var(--brown) !important;
+}
+li.dot.selected {
+  background-color: var(--button-background) !important;
+}
+
+/*table portrait layout (768px to 959px) */
+@media only screen and (max-width: 768px) {
+
+  /*... tablet portrait styles */
+  .myCarousel h3,
+  .myCarousel p {
+    letter-spacing: normal;
+  }
+
+}
+
+@media only screen and (max-width: 470px) {
+
+  /*..phone portrait styles */
+  .myCarousel h3 {
+    font-size: 1.2rem;
+  }
+
+  .myCarousel p {
+    font-size: .9rem;
+  }
+}
+
+@media only screen and (max-width: 325px) {
+  .myCarousel h3 {
+    font-size: 1rem;
+  }
+}
+
+.carousel .slide img {
+  width: 10rem !important;
+  border-radius: 50%;
+}
+
+.carousel .slide {
+  background: transparent !important;
+  height: 100% !important;
+  padding-top: 2rem;
+}
+
+.carousel-root {
+  margin: auto !important;
+  margin-top: 3% !important;
+}
