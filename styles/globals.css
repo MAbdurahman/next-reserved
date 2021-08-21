@@ -1351,3 +1351,54 @@ input::placeholder {
   font-size: 1.5rem;
   letter-spacing: 2px;
 }
+/* ==========================================
+        about-page
+============================================= */
+#about-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 1em !important;
+}
+#about-page div.about-image {
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+  /* background-color: #386926; */
+  width: 100%;
+  height: auto;
+
+}
+
+figure.figure:nth-child(2) {
+  margin-left: .75em;
+}
+#about-page div.about-info {
+  /* background-color: #94ca81; */
+  width: 100%;
+
+}
+div.about-info .about-info-text {
+  font-size: 1.2rem;
+}
+/*tablet landscape and desktop layout (960px or more) */
+@media only screen and (min-width: 960px) {
+  /*...tablet landscape and desktop styles */
+}
+
+/*table portrait layout (768px to 959px) */
+@media only screen and (max-width: 959px) {
+  /*... tablet portrait styles */
+}
+
+/*mobile landscape layout (480px to 767px) */
+@media only screen and (max-width: 767px) {
+  /*...mobile landscape styles */
+}
+
+/*mobile portrait layout (479px or less) */
+@media only screen and (max-width: 479px) {
+  /*...mobile portrait styles */
+}
