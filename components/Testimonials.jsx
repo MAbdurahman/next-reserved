@@ -1,5 +1,5 @@
 import React from 'react';
-import TestimonialCarousel from './layout/TestimonialCarousel';
+import TestimonialCarousel from './../components/layout/TestimonialCarousel';
 
 export default function Testimonials() {
 	return (
