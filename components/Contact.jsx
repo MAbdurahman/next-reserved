@@ -30,8 +30,11 @@ export default function Contact() {
 	const onSubmit = (data, r) => {
 		setIsSubmitting(true);
 		setTimeout(() => {
+			setName('');
+			setEmail('');
+			setMessage('');
 			setIsSubmitting(false);
-		}, 1000);
+		}, 2000);
 		sendEmail(
 			serviceID,
 			templateID,
