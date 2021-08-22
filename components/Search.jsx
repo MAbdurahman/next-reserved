@@ -24,9 +24,9 @@ export default function Search() {
 			<div className='row wrapper'>
 				<div className='col-10 col-lg-5'>
 					<form className='shadow-lg search-box' onSubmit={submitHandler}>
-						<h2 className='mb-3'>Search Rooms</h2>
+						<h2 className='mb-3 text-center'>Search Rooms</h2>
 						<div className='form-group'>
-							<label htmlFor='location_field'>Location</label>
+							{/* <label htmlFor='location_field'>Location</label> */}
 							<input
 								type='text'
 								className='form-control'
@@ -50,12 +50,12 @@ export default function Search() {
 						</div>
 
 						<div className='form-group'>
-							<label htmlFor='guest_field'>Number of Guests</label>
+							{/* <label htmlFor='guest_field'>Number of Guests</label> */}
 							<input
 								type='number'
 								className='form-control'
 								id='guest_field'
-								placeholder='Enter Number'
+								placeholder='Number of Guests'
 								value={guests}
 								onChange={e => setGuests(e.target.value)}
 							/>
@@ -74,7 +74,7 @@ export default function Search() {
 						</div>
 
 						<div className='form-group'>
-							<label htmlFor='room_type_field'>Room Type</label>
+							{/* <label htmlFor='room_type_field'>Room Type</label> */}
 							<input
 								type='text'
 								className='form-control'

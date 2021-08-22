@@ -2,11 +2,7 @@ import React from 'react';
 import { Image } from 'react-bootstrap';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-/* import testimonial_1 from '../../img/testimonials/testimonial-1.jpg';
-import testimonial_2 from '../../img/testimonials/testimonial-2.jpg';
-import testimonial_3 from '../../img/testimonials/testimonial-3.jpg';
-import testimonial_4 from '../../img/testimonials/testimonial-4.jpg';
-import testimonial_5 from '../../img/testimonials/testimonial-5.jpg'; */
+
 
 export default function TestimonialCarousel() {
 	return (

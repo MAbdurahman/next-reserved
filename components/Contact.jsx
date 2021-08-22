@@ -7,7 +7,7 @@ export default function Contact() {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [message, setMessage] = useState('');
-
+	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [successMessage, setSuccessMessage] = useState('');
 	const { register, handleSubmit, errors } = useForm();
 
@@ -22,14 +22,16 @@ export default function Contact() {
 		emailjs
 			.send(serviceID, templateID, variables, userID)
 			.then(() => {
-				setSuccessMessage(
-					'Your message was sent successfully!'
-				);
+				setSuccessMessage('Your message was sent successfully!');
 			})
 			.catch(err => console.error(`EmailJS Error - ${err}`));
 	};
 
 	const onSubmit = (data, r) => {
+		setIsSubmitting(true);
+		setTimeout(() => {
+			setIsSubmitting(false);
+		}, 1000);
 		sendEmail(
 			serviceID,
 			templateID,
@@ -39,7 +41,7 @@ export default function Contact() {
 				message: data.message,
 			},
 			userID
-		)
+		);
 		r.target.reset();
 	};
 	return (
@@ -120,8 +122,12 @@ export default function Contact() {
 								{errors.message && errors.message.message}
 							</span>
 						</div>
-						<button type='submit' className='button-3d py-2'>
-							Send Email
+						<button
+							type='submit'
+							className='button-3d py-2'
+							disabled={isSubmitting}
+						>
+							{isSubmitting ? 'Please wait...' : 'Send Mail'}
 						</button>
 					</form>
 				</div>

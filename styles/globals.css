@@ -783,6 +783,20 @@ div.modal-header {
   font-size: 1.333rem;
 }
 /* ==========================================
+        No Review Component
+============================================= */
+div.no-review-box {
+  height: 200px;
+}
+img.no-reviews-img {
+  width: 250px;
+  height: auto;
+}
+h2.no-review-text {
+  font-family: var(--font-brand);
+  font-size: 4rem;
+}
+/* ==========================================
         Styles from Original
 ============================================= */
 
@@ -1315,6 +1329,10 @@ input::placeholder {
 .greenColor {
   color: green;
   color: var(--green);
+  font-weight: 800;
+}
+.goldColor {
+  color: var(--gold);
   font-weight: 800;
 }
 

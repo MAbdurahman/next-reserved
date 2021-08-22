@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 
 import { MDBDataTable } from 'mdbreact';
 import Loader from '../layout/Loader';
+import NoReviews from './../../components/layout/NoReviews';
+
 
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -130,9 +132,7 @@ export default function RoomReviews() {
 					hover
 				/>
 			) : (
-				<div className='alert alert-danger mt-5 text-center'>
-					No Reviews
-				</div>
+				<NoReviews />
 			)}
 		</div>
 	);
