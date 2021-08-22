@@ -63,7 +63,7 @@ export default function Contact() {
 						<div className='contact_fields'>
 							<input
 								type='text'
-								className='form-control mb-1'
+								className='form-control mb-1 text-left'
 								id='name_field'
 								placeholder='Name*'
 								value={name}
@@ -84,7 +84,7 @@ export default function Contact() {
 						<div className='contact_fields'>
 							<input
 								type='text'
-								className='form-control mb-1'
+								className='form-control mb-1 text-left'
 								id='email_field'
 								placeholder='Email*'
 								value={email}
@@ -104,7 +104,7 @@ export default function Contact() {
 						</div>
 						<div className='contact_fields'>
 							<textarea
-								className='form-control mb-1'
+								className='form-control mb-1 text-left'
 								id='message_area'
 								placeholder='Message*'
 								rows='3'

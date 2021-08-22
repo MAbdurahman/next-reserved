@@ -36,12 +36,13 @@ export default function Login() {
 			<div className='row wrapper'>
 				<div className='col-10 col-lg-5'>
 					<form className='shadow-lg login-box' onSubmit={submitHandler}>
-						<h1 className='mb-3'>Login</h1>
+						<h1 className='mb-3 text-center'>Login</h1>
 						<div className='form-group'>
-							<label htmlFor='email_field'>Email</label>
+							{/* <label htmlFor='email_field'>Email</label> */}
 							<input
 								type='email'
 								id='email_field'
+								placeholder='Email*'
 								className='form-control'
 								value={email}
 								onChange={e => setEmail(e.target.value)}
@@ -49,10 +50,11 @@ export default function Login() {
 						</div>
 
 						<div className='form-group'>
-							<label htmlFor='password_field'>Password</label>
+							{/* <label htmlFor='password_field'>Password</label> */}
 							<input
 								type='password'
 								id='password_field'
+								placeholder='Password*'
 								className='form-control'
 								value={password}
 								onChange={e => setPassword(e.target.value)}

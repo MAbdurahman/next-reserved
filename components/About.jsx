@@ -46,7 +46,7 @@ export default function About() {
 						<div className='about-image'>
 							<figure className='figure'>
 								<Image
-									src='images/dummy-images/800x600.png'
+									src='images/dummy-images/building-2.jpg'
 									className='figure-img img-fluid'
 									alt='figure image'
 								/>
@@ -63,7 +63,7 @@ export default function About() {
 							</figure>
 							<figure className='figure'>
 								<Image
-									src='images/dummy-images/800x600.png'
+									src='images/dummy-images/building-1.jpg'
 									className='figure-img img-fluid'
 									alt='figure image'
 								/>
@@ -85,84 +85,84 @@ export default function About() {
 				<div className='row mb-4'>
 					<div className='col-6 col-sm-4 col-lg-2 mb-3'>
 						<Image
-							src='images/dummy-images/400X300.png'
+							src='images/dummy-images/lgo-1.jpg'
 							className='img-fluid'
 							alt='placeholder'
 						/>
 					</div>
 					<div className='col-6 col-sm-4 col-lg-2 mb-3'>
 						<Image
-							src='images/dummy-images/400X300.png'
+							src='images/dummy-images/lgo-2.jpg'
 							className='img-fluid'
 							alt='placeholder'
 						/>
 					</div>
 					<div className='col-6 col-sm-4 col-lg-2 mb-3'>
 						<Image
-							src='images/dummy-images/400X300.png'
+							src='images/dummy-images/lgo-3.jpg'
 							className='img-fluid'
 							alt='placeholder'
 						/>
 					</div>
 					<div className='col-6 col-sm-4 col-lg-2 mb-3'>
 						<Image
-							src='images/dummy-images/400X300.png'
+							src='images/dummy-images/lgo-4.jpg'
 							className='img-fluid'
 							alt='placeholder'
 						/>
 					</div>
 					<div className='col-6 col-sm-4 col-lg-2 mb-3'>
 						<Image
-							src='images/dummy-images/400X300.png'
+							src='images/dummy-images/lgo-5.jpg'
 							className='img-fluid'
 							alt='placeholder'
 						/>
 					</div>
 					<div className='col-6 col-sm-4 col-lg-2 mb-3'>
 						<Image
-							src='images/dummy-images/400X300.png'
+							src='images/dummy-images/lgo-6.jpg'
 							className='img-fluid'
 							alt='placeholder'
 						/>
 					</div>
 					<div className='col-6 col-sm-4 col-lg-2 mb-3'>
 						<Image
-							src='images/dummy-images/400X300.png'
+							src='images/dummy-images/lgo-7.jpg'
 							className='img-fluid'
 							alt='placeholder'
 						/>
 					</div>
 					<div className='col-6 col-sm-4 col-lg-2 mb-3'>
 						<Image
-							src='images/dummy-images/400X300.png'
+							src='images/dummy-images/lgo-8.jpg'
 							className='img-fluid'
 							alt='placeholder'
 						/>
 					</div>
 					<div className='col-6 col-sm-4 col-lg-2 mb-3'>
 						<Image
-							src='images/dummy-images/400X300.png'
+							src='images/dummy-images/lgo-9.jpg'
 							className='img-fluid'
 							alt='placeholder'
 						/>
 					</div>
 					<div className='col-6 col-sm-4 col-lg-2 mb-3'>
 						<Image
-							src='images/dummy-images/400X300.png'
+							src='images/dummy-images/lgo-10.jpg'
 							className='img-fluid'
 							alt='placeholder'
 						/>
 					</div>
 					<div className='col-6 col-sm-4 col-lg-2 mb-3'>
 						<Image
-							src='images/dummy-images/400X300.png'
+							src='images/dummy-images/lgo-11.jpg'
 							className='img-fluid'
 							alt='placeholder'
 						/>
 					</div>
 					<div className='col-6 col-sm-4 col-lg-2 mb-3'>
 						<Image
-							src='images/dummy-images/400X300.png'
+							src='images/dummy-images/lgo-12.jpg'
 							className='img-fluid'
 							alt='placeholder'
 						/>

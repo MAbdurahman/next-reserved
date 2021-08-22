@@ -69,7 +69,7 @@ export default function UpdateUser() {
 					<div className='row wrapper'>
 						<div className='col-10 col-lg-5'>
 							<form className='shadow-lg update-user-form-box' onSubmit={submitHandler}>
-								<h1 className='mt-2 mb-5'>Update User</h1>
+								<h1 className='mt-2 mb-5 text-center'>Update User</h1>
 
 								<div className='form-group'>
 									<label htmlFor='name_field'>Name</label>

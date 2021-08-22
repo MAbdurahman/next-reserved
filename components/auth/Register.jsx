@@ -62,13 +62,14 @@ export default function Register() {
 						className='shadow-lg register-box'
 						onSubmit={submitHandler}
 					>
-						<h1 className='mb-3'>Register</h1>
+						<h1 className='mb-3 text-center'>Register</h1>
 
 						<div className='form-group'>
-							<label htmlFor='name_field'>Full Name</label>
+							{/* <label htmlFor='name_field'>Full Name</label> */}
 							<input
 								type='text'
 								id='name_field'
+								placeholder='Full name*'
 								className='form-control'
 								name='name'
 								value={name}
@@ -77,10 +78,11 @@ export default function Register() {
 						</div>
 
 						<div className='form-group'>
-							<label htmlFor='email_field'>Email</label>
+							{/* <label htmlFor='email_field'>Email</label> */}
 							<input
 								type='email'
 								id='email_field'
+								placeholder='Email*'
 								className='form-control'
 								name='email'
 								value={email}
@@ -89,10 +91,11 @@ export default function Register() {
 						</div>
 
 						<div className='form-group'>
-							<label htmlFor='password_field'>Password</label>
+							{/* <label htmlFor='password_field'>Password</label> */}
 							<input
 								type='password'
 								id='password_field'
+								placeholder='Password*'
 								className='form-control'
 								name='password'
 								value={password}
