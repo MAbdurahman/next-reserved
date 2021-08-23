@@ -18,23 +18,26 @@ export default function Contact() {
 	const templateID = process.env.EMAIL_JS_TEMPLATE_ID;
 	const userID = process.env.EMAIL_JS_USER_ID;
 	//**************** functions ****************//
+	const absoluteReset = () => {
+		setName('');
+		setEmail('');
+		setMessage('');
+		setIsSubmitting(false);
+	};
 	const sendEmail = (serviceID, templateID, variables, userID) => {
+		setIsSubmitting(true);
 		emailjs
 			.send(serviceID, templateID, variables, userID)
 			.then(() => {
 				setSuccessMessage('Your message was sent successfully!');
+				setTimeout(() => {
+					absoluteReset();
+				}, 2000);
 			})
 			.catch(err => console.error(`EmailJS Error - ${err}`));
 	};
 
 	const onSubmit = (data, r) => {
-		setIsSubmitting(true);
-		setTimeout(() => {
-			setName('');
-			setEmail('');
-			setMessage('');
-			setIsSubmitting(false);
-		}, 2000);
 		sendEmail(
 			serviceID,
 			templateID,
@@ -120,7 +123,7 @@ export default function Contact() {
 											'Your message must be at least 30 characters!',
 									},
 								})}
-							></textarea>{' '}
+							></textarea>
 							<span className='error-message'>
 								{errors.message && errors.message.message}
 							</span>
