@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { clearErrors } from './../redux/actions/roomActions';
 
+import NoRooms from './layout/NoRooms';
+
 export default function Home() {
 	//**************** variables ****************//
 	const dispatch = useDispatch();
@@ -63,9 +65,10 @@ export default function Home() {
 				</Link>
 				<div className='row'>
 					{rooms && rooms.length === 0 ? (
-						<div className='alert alert-danger mt-5 w-100 text-center'>
-							<b>No Rooms Found!</b>
-						</div>
+						// <div className='alert alert-danger mt-5 w-100 text-center'>
+						// 	<b>No Rooms Found!</b>
+						// </div>
+						<NoRooms />
 					) : (
 						rooms &&
 						rooms.map(room => <RoomItem key={room._id} room={room} />)
