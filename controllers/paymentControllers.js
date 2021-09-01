@@ -61,8 +61,7 @@ const webhookCheckout = catchAsyncErrors(async (req, res) => {
 			const session = event.data.object;
 
 			const room = session.client_reference_id;
-			const user = (await User.findOne({ email: session.customer_email }))
-				.id;
+			const user = (await User.findOne({ email: session.customer_email })).id;
 
 			const amountPaid = session.amount_total / 100;
 
@@ -86,7 +85,7 @@ const webhookCheckout = catchAsyncErrors(async (req, res) => {
 				paidAt: Date.now(),
 			});
 
-			res.status(200).json({ success: true });
+			res.status(200).json({ success: true, booking});
 		}
 	} catch (error) {
 		console.log('Error in Stripe Checkout Payment => ', error);

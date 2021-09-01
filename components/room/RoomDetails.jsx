@@ -223,6 +223,7 @@ export default function RoomDetails() {
 									onClick={() =>
 										bookRoom(room._id, room.pricePerNight)
 									}
+
 									disabled={
 										bookingLoading || paymentLoading ? true : false
 									}

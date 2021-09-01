@@ -66,7 +66,7 @@ export const authReducer = (state = { user: null }, action) => {
 };
 
 /*=============================================
-         Load User Reducer
+         Loaded User Reducer
 ================================================*/
 export const loadedUserReducer = (
 	state = { loading: true, user: null },
