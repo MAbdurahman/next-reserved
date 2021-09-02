@@ -85,18 +85,11 @@ const webhookCheckout = catchAsyncErrors(async (req, res) => {
 				paidAt: Date.now(),
 			});
 
-			res.status(200).json({ success: true});
+			res.status(200).json({success: true});
 		}
 	} catch (error) {
 		console.log('Error in Stripe Checkout Payment => ', error);
 	}
 });
-/*===============================================================
-            Get All Rooms => (GET)/api/rooms
-==================================================================*/
-
-/*===============================================================
-            Get All Rooms => (GET)/api/rooms
-==================================================================*/
 
 export { stripeCheckoutSession, webhookCheckout};
