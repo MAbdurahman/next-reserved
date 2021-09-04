@@ -13,6 +13,7 @@ export default function NewReview() {
 	//**************** variables ****************//
 	const [rating, setRating] = useState(0);
 	const [comment, setComment] = useState('');
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const dispatch = useDispatch();
 	const router = useRouter();
@@ -41,6 +42,7 @@ export default function NewReview() {
 	}, [dispatch, success, error, id]);
 
 	const submitHandler = () => {
+		setIsSubmitting(true);
 		const reviewData = {
 			rating,
 			comment,
@@ -48,6 +50,9 @@ export default function NewReview() {
 		};
 
 		dispatch(newReview(reviewData));
+		setTimeout(() => {
+			setIsSubmitting(false);
+		}, 1000);
 	};
 
 	function setUserRatings() {
@@ -157,9 +162,10 @@ export default function NewReview() {
 								className='button-3d my-3 float-right px-4 text-white'
 								data-dismiss='modal'
 								aria-label='Close'
+								disabled={isSubmitting}
 								onClick={submitHandler}
 							>
-								Submit Review
+							{isSubmitting ? 'Submitting...' : 'Submit Review'}
 							</button>
 						</div>
 					</div>
