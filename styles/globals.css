@@ -419,6 +419,11 @@ footer .link a:hover {
   text-decoration: underline;
 }
 
+footer i.fa.fa-phone,
+footer i.fa.fa-envelope-open {
+  color: var(--footer-color);
+}
+
 footer .copyright p {
   margin-bottom: 0;
   border-top: 2px solid rgba(79, 44, 29, 0.1);
