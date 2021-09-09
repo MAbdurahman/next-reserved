@@ -1,7 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import PhoneIcon from '@material-ui/icons/Phone';
-import EmailIcon from '@material-ui/icons/Email';
 import { Navbar, Image } from 'react-bootstrap';
 
 export default function Footer() {
