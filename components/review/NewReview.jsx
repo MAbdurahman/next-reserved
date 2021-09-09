@@ -48,11 +48,13 @@ export default function NewReview() {
 			comment,
 			roomId: id,
 		};
+		setTimeout(() => {
+			dispatch(newReview(reviewData));
 
-		dispatch(newReview(reviewData));
+		}, 2500)
 		setTimeout(() => {
 			setIsSubmitting(false);
-		}, 1000);
+		}, 2000);
 	};
 
 	function setUserRatings() {

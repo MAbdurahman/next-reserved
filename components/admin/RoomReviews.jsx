@@ -112,7 +112,7 @@ export default function RoomReviews() {
 						<div className='form-group'>
 							<label htmlFor='roomId_field'>Enter Room ID</label>
 							<input
-								type='email'
+								type='text'
 								id='roomId_field'
 								className='form-control'
 								value={roomId}
