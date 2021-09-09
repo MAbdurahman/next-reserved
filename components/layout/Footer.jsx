@@ -18,16 +18,17 @@ export default function Footer() {
 						</Navbar.Brand>
 						<p className='pr-5'>
 							We are a brand whose incredible family of associates put
-							their souls in hospitality everyday. The needs of our guests 
-							and affiliates are at the forefront of what we do. Through
-							authenticity and innovation, great memorable experiences
-							begin with us!
+							their souls in hospitality everyday. The needs of our
+							guests and affiliates are at the forefront of what we do.
+							Through authenticity and innovation, great memorable
+							experiences begin with us!
 						</p>
 						<p className='social-icons'>
 							<a
 								href='https://www.facebook.com'
 								target='_blank'
 								className='social-icon facebook'
+								rel='noreferrer'
 							>
 								<i className='fa fa-facebook-square'></i>
 							</a>
@@ -35,6 +36,7 @@ export default function Footer() {
 								href='https://twitter.com/'
 								target='_blank'
 								className='social-icon twitter'
+								rel='noreferrer'
 							>
 								<i className='fa fa-twitter-square'></i>
 							</a>
@@ -42,6 +44,7 @@ export default function Footer() {
 								href='https://www.instagram.com/'
 								target='_blank'
 								className='social-icon instagram'
+								rel='noreferrer'
 							>
 								<i className='fa fa-instagram'></i>
 							</a>
@@ -91,11 +94,12 @@ export default function Footer() {
 							Work-hours: 9:00am - 12:00am
 						</p>
 						<p className='about-location-item mb-1 link'>
-							<PhoneIcon />
+							<i class='fa fa-phone' aria-hidden='true'></i>&nbsp;
 							<a href='tel:901-425-5525'>123-456-7890</a>
 						</p>
 						<p className='about-location-item mb-2 link'>
-							<EmailIcon />{' '}
+							<i class='fa fa-envelope-open' aria-hidden='true'></i>
+							&nbsp;
 							<a
 								href='mailto:mdbdrrhm2@gmail.com'
 								target='_blank'
