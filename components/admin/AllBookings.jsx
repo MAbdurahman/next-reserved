@@ -164,7 +164,7 @@ export default function AllBookings() {
 		easyinvoice.download(`invoice_${booking._id}.pdf`, result.pdf);
 	};
 	return (
-		<div className='container container-fluid'>
+		<div id='admin-bookings' className='container container-fluid'>
 			{loading ? (
 				<Loader />
 			) : (
@@ -175,7 +175,7 @@ export default function AllBookings() {
 
 					<MDBDataTable
 						data={setBookings()}
-						className='px-3'
+						className='px-3 all-bookings'
 						bordered
 						striped
 						hover

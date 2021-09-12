@@ -103,7 +103,7 @@ export default function AllRooms() {
 		dispatch(deleteRoom(id));
 	};
 	return (
-		<div className='container container-fluid'>
+		<div id='admin-all-rooms' className='container container-fluid'>
 			{loading ? (
 				<Loader />
 			) : (
