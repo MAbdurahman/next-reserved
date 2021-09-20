@@ -12,15 +12,13 @@ export default function MyBookings() {
 	let { bookings, error } = useSelector(state => state.bookings);
 
 	//**************** functions ****************//
-	useEffect(() => {	
-
+	useEffect(() => {
 		if (error) {
 			toast.error(error);
 			dispatch(clearErrors());
 		}
 	}, [dispatch]);
 
-	
 	const setBookings = () => {
 		const data = {
 			columns: [
@@ -53,7 +51,6 @@ export default function MyBookings() {
 			rows: [],
 		};
 
-		
 		bookings &&
 			bookings.forEach(booking => {
 				data.rows.push({
@@ -80,63 +77,61 @@ export default function MyBookings() {
 				});
 			});
 
-			return data;
-		}
+		return data;
+	};
 
-	
-		const downloadInvoice = async booking => {
-			const data = {
-				documentTitle: 'Reservation Invoice', //Defaults to INVOICE
-				currency: 'USD',
-				taxNotation: 'vat', //vat or gst
-				marginTop: 25,
-				marginRight: 25,
-				marginLeft: 25,
-				marginBottom: 25,
-				logo:
-					'https://res.cloudinary.com/mdbdrrhm/image/upload/v1627728092/next-reserve/miscellaneous/project-logo_yjikyh.png',
-				sender: {
-					company: 'e-Reserve',
-					address: '1234 SomeStreet Ave. #100',
-					zip: 'SomeCity',
-					city: 'SomeState',
-					country: '11235-3747',
+	const downloadInvoice = async booking => {
+		const data = {
+			documentTitle: 'Reservation Invoice', //Defaults to INVOICE
+			currency: 'USD',
+			taxNotation: 'vat', //vat or gst
+			marginTop: 25,
+			marginRight: 25,
+			marginLeft: 25,
+			marginBottom: 25,
+			logo: 'https://res.cloudinary.com/mdbdrrhm/image/upload/v1627728092/next-reserve/miscellaneous/project-logo_yjikyh.png',
+			sender: {
+				company: 'e-Reserve',
+				address: '1234 SomeStreet Ave. #100',
+				zip: 'SomeCity',
+				city: 'SomeState',
+				country: '11235-3747',
+			},
+			client: {
+				company: `${booking.user.name}`,
+				address: `${booking.user.email}`,
+				zip: '',
+				city: `Check In: ${new Date(booking.checkInDate).toLocaleString(
+					'en-US'
+				)}`,
+				country: `Check Out: ${new Date(
+					booking.checkOutDate
+				).toLocaleString('en-US')}`,
+			},
+			invoiceNumber: `${booking._id}`,
+			invoiceDate: `${new Date(Date.now()).toLocaleString('en-US')}`,
+			products: [
+				{
+					quantity: `${booking.daysOfStay}`,
+					description: `${booking.room.name}`,
+					tax: '9.25',
+					price: booking.room.pricePerNight,
 				},
-				client: {
-					company: `${booking.user.name}`,
-					address: `${booking.user.email}`,
-					zip: '',
-					city: `Check In: ${new Date(booking.checkInDate).toLocaleString(
-						'en-US'
-					)}`,
-					country: `Check Out: ${new Date(
-						booking.checkOutDate
-					).toLocaleString('en-US')}`,
-				},
-				invoiceNumber: `${booking._id}`,
-				invoiceDate: `${new Date(Date.now()).toLocaleString('en-US')}`,
-				products: [
-					{
-						quantity: `${booking.daysOfStay}`,
-						description: `${booking.room.name}`,
-						tax: '9.25',
-						price: booking.room.pricePerNight,
-					},
-				],
-				bottomNotice:
-					'An auto generated invoice of your reservation on e-Reserve.',
-			};
-
-			const result = await easyinvoice.createInvoice(data);
-			easyinvoice.download(`invoice_${booking._id}.pdf`, result.pdf);
+			],
+			bottomNotice:
+				'An auto generated invoice of your reservation on e-Reserve.',
 		};
 
+		const result = await easyinvoice.createInvoice(data);
+		easyinvoice.download(`invoice_${booking._id}.pdf`, result.pdf);
+	};
 
 	return (
 		<div className='container container-fluid'>
 			<h1 className='my-5'>My Reservations</h1>
 
 			<MDBDataTable
+				responsive
 				data={setBookings()}
 				className='px-3'
 				bordered

@@ -116,6 +116,7 @@ export default function AllUsers() {
 					<h1 className='my-5'>{`${users && users.length} Users`}</h1>
 
 					<MDBDataTable
+						responsive
 						data={setUsers()}
 						className='px-3'
 						bordered

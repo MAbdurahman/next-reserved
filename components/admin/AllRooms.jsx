@@ -119,6 +119,7 @@ export default function AllRooms() {
 					</h1>
 
 					<MDBDataTable
+						responsive
 						data={setRooms()}
 						className='px-3'
 						bordered

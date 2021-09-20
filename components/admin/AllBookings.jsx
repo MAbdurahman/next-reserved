@@ -126,8 +126,7 @@ export default function AllBookings() {
 			marginRight: 25,
 			marginLeft: 25,
 			marginBottom: 25,
-			logo:
-				'https://res.cloudinary.com/mdbdrrhm/image/upload/v1627728092/next-reserve/miscellaneous/project-logo_yjikyh.png',
+			logo: 'https://res.cloudinary.com/mdbdrrhm/image/upload/v1627728092/next-reserve/miscellaneous/project-logo_yjikyh.png',
 			sender: {
 				company: 'e-Reserve',
 				address: '1234 SomeStreet Ave. #100',
@@ -174,6 +173,7 @@ export default function AllBookings() {
 					} Reservations`}</h1>
 
 					<MDBDataTable
+						responsive
 						data={setBookings()}
 						className='px-3 all-bookings'
 						bordered
